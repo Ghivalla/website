@@ -1,3 +1,5 @@
+require('dotenv').config();
+import i18nConfig from "./i18n-config";
 
 export default {
   mode: 'universal',
@@ -14,6 +16,10 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+  env: {
+    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
   },
   /*
   ** Customize the progress-bar color
@@ -42,7 +48,9 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    ["nuxt-i18n", i18nConfig],
     '@nuxtjs/style-resources',
+    'nuxt-i18n'
   ],
   styleResources: {
     sass: [
