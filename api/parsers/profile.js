@@ -6,6 +6,8 @@ export default function(entry) {
 	const profilePicture = parseImage(entry.fields.profilePicture);
 	const cta = parseLink(entry.fields.cta);
 	const socialMedia = entry.fields.socialMedia.map(media => parseIcon(media));
+	const localisation = parseImage(entry.fields.localisation);
+	const mail = parseImage(entry.fields.mail);
 	const background = parseImage(entry.fields.background);
 	const { name, surename, jobPosition } = entry.fields;
 	return {
@@ -15,6 +17,8 @@ export default function(entry) {
 		profilePicture,
 		cta,
 		socialMedia,
-		background
+		background,
+		mail,
+		localisation
 	};
 }

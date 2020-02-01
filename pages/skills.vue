@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h1 class="name">{{ name }}</h1>
+    <h1 class="name">SKILLS</h1>
   </div>
 </template>
 <script>
@@ -22,12 +22,9 @@ export default {
   justify-content: center
   align-items: center
   display: flex
-  width: 100vw
-  min-height: 100vh
-  margin: 0px
-  padding: 0px
 
   .name
     font-size: 80px
+
 
 </style>

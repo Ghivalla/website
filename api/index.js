@@ -33,4 +33,4 @@ const getEntries = async (locale) => {
     );
 };
 
-export default (locale = "fr-FR") => getEntries(locale);
+export default (locale = "en") => getEntries(locale);
