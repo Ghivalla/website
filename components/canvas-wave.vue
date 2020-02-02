@@ -70,7 +70,7 @@ export default {
 			y: this.canvas.height / 2,
 			length: 0.01,
 			amplitude: 100,
-			frequency: 0.01
+			frequency: 0.025
 		},
 		this.increment = this.wave.frequency
 		this.animate()
