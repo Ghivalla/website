@@ -1,10 +1,19 @@
 <template>
   <div class="wrapper">
-    <h1 class="name">{{ name }}</h1>
+    <CanvasWave/>
+    <div class="cta">
+      <h1 class="name">
+        {{name}}
+      </h1>
+      <button class="button">
+        Hire Me
+      </button>
+    </div>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
+import CanvasWave from '@/components/canvas-wave'
 export default {
   computed: {
     ...mapState({
@@ -13,7 +22,8 @@ export default {
       surename: state => state.profile.surename,
       jobPosition: state => state.profile.jobPosition,
     })
-  }
+  },
+  components: { CanvasWave }
 }
 </script>
 
@@ -27,7 +37,31 @@ export default {
   margin: 0px
   padding: 0px
 
-  .name
-    font-size: 80px
+  .cta
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    position: fixed
+    top: 50%
+    left: 50%
+    margin-left: -150px
+    margin-top: -70px
+    max-width: 300px
+    max-height: 140px
+
+    .name
+      font-size: 80px
+      margin-bottom: 32px
+
+    .button
+      background-color: transparent
+      border: 1px solid $white
+      border-radius: 4px
+      padding: 18px 25px 19px
+      width: 150px
+
+      &:hover
+        background-color: rgba(white,0.1)
 
 </style>
