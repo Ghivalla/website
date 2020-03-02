@@ -1,7 +1,7 @@
 <template>
 	<ul class="social-media">
       <li class="icon" v-for="media in socialMedia">
-        <a :href="media.link.href">
+        <a :href="media.link.href" target="_blank">
           <SvgIcon bg="white" :icon="media.image" />
         </a>
       </li>

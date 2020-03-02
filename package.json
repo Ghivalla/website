@@ -1,5 +1,5 @@
 {
-  "name": "portfolio",
+  "name": "ghivalla",
   "version": "1.0.0",
   "description": "my personal website",
   "author": "Ghivalla",
@@ -19,5 +19,7 @@
     "nuxt-i18n": "^6.5.0",
     "sass-loader": "^8.0.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  }
 }

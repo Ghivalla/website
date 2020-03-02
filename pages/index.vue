@@ -1,30 +1,26 @@
 <template>
   <div class="wrapper">
-    <CanvasWave/>
+    <CanvasWave />
     <div class="cta">
-      <h1 class="name">
-        {{name}}
-      </h1>
-      <button class="button">
-        Hire Me
-      </button>
+      <h1 class="name">{{name}}</h1>
+      <button class="button" @mouseover="frenzy = true">Hire Me</button>
     </div>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
-import CanvasWave from '@/components/canvas-wave'
+import { mapState } from "vuex";
+import CanvasWave from "@/components/canvas-wave";
 export default {
   computed: {
     ...mapState({
       img: state => state.profile.profilePicture.src,
       name: state => state.profile.name,
       surename: state => state.profile.surename,
-      jobPosition: state => state.profile.jobPosition,
+      jobPosition: state => state.profile.jobPosition
     })
   },
   components: { CanvasWave }
-}
+};
 </script>
 
 <style lang="sass" scoped>
