@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server to handle some request from my personal website website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ghivalla",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^6.5.3"
+  }
+}
