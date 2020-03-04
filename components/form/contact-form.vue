@@ -3,21 +3,32 @@
     <div class="left">
       <h1 class="h1">Contact Form</h1>
       <div class="subtitle">
-        <p class="h4">
+        <p>
           Interested in working together ? Fill out the form below with some
           information about your project and I will get back to you as soon as I
-          can (response time < 12hours)
+          can.
         </p>
+        <p>
+          <a href="mailto:ghivalla@gmail.com"
+            >You can also send me an email : ghivalla@gmail.com</a
+          >
+        </p>
+        <p>response time < 12hours</p>
       </div>
     </div>
     <div class="right">
       <form @submit.prevent="sendForm" class="form">
         <div class="fields">
-          <TextField title="name" v-model="name" required />
-          <TextField title="email" v-model="email" required />
-          <TextField title="message" v-model="message" required textarea />
+          <TextField :title="nameLabel" v-model="name" required />
+          <TextField :title="emailLabel" v-model="email" required />
+          <TextField
+            :title="messageLabel"
+            v-model="message"
+            required
+            textarea
+          />
 
-          <input type="submit" value="submit" class="button" />
+          <input type="submit" :value="buttonLabel" class="button" />
         </div>
       </form>
     </div>
@@ -35,6 +46,14 @@ export default {
       email: null,
       message: null
     };
+  },
+  computed: {
+    ...mapState({
+      nameLabel: state => state.form.nameLabel,
+      emailLabel: state => state.form.emailLabel,
+      messageLabel: state => state.form.messageLabel,
+      buttonLabel: state => state.form.buttonLabel
+    })
   },
   components: { TextField },
   methods: {
@@ -62,13 +81,11 @@ export default {
   .left
     width: calc(100%/2)
     .subtitle
-      display: flex
-      align-items: center
       margin: 15px 0
-      .icon
-        margin-right: 10px
-      h2
+      p
         font-weight: 500
+        &:not(:last-child)
+            margin-bottom: 16px
 .fields
   display: -ms-grid
   display: grid
@@ -77,9 +94,10 @@ export default {
 
 input[type="submit"]
   cursor: pointer
-  width: calc(100%/4)
   height: 60px
-  margin-left: calc(100%/1.33)
+  width: 100%
+  max-width: 200px
+  margin-left: auto
   user-select: none
   outline: none
   white-space: pre
@@ -93,27 +111,27 @@ input[type="submit"]
   &:hover
     background-color: rgba(white,0.1)
 
-@media screen and (max-width: 1700px)
-  section
-    background-size: 55%
-@media screen and (max-width: 1130px)
+@media screen and (max-width: 1000px)
   .wrapper
     display: flex
     flex-wrap: wrap
     justify-content: center
     align-items: center
+    padding: 140px 0 64px 0
+    background-position: center
     .left, .right
       width: 90%
       margin-bottom: 50px
-@media screen and (max-width: 800px)
-  .wrapper
-    padding-top: 140px
-    padding-bottom: 64px
+
 @media screen and (max-width: 600px)
   h2
     margin-top: 10px
   .wrapper
     padding-top: 100px
+
+    input[type="submit"]
+        max-width: none
+        margin: 0
 @media screen and (max-width: 520px)
   .fields
     display: block

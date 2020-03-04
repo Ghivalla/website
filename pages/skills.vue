@@ -4,17 +4,17 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState({
       img: state => state.profile.profilePicture.src,
       name: state => state.profile.name,
       surename: state => state.profile.surename,
-      jobPosition: state => state.profile.jobPosition,
+      jobPosition: state => state.profile.jobPosition
     })
   }
-}
+};
 </script>
 
 <style lang="sass" scoped>
@@ -25,6 +25,4 @@ export default {
 
   .name
     font-size: 80px
-
-
 </style>

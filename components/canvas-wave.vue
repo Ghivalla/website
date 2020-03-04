@@ -65,6 +65,7 @@ export default {
       this.frequencyManager();
       this.increment += this.wave.frequency;
     },
+
     frequencyManager() {
       this.wave.frequency =
         this.wave.frequency <= 0.025
@@ -90,13 +91,17 @@ export default {
     }),
       (this.increment = this.wave.frequency);
     this.animate();
+  },
+
+  beforeDestroy() {
+    cancelAnimationFrame(this.animate);
   }
 };
 </script>
 <style lang="sass" scoped>
- canvas
-    position: fixed
-    z-index: -2
-    top: 0
-    left: 0
+canvas
+   position: fixed
+   z-index: -2
+   top: 0
+   left: 0
 </style>

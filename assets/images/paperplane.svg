@@ -1,3 +1,11 @@
-<svg width="876" height="536" viewBox="0 0 876 536" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M872.245 2.43569L238.245 359.436M904.404 -41.7055L554.837 437.881M238.065 359.013L178.185 535.417M178.604 534.181L900.437 -19.7333M554.88 438.485L-0.119845 301.485M179.501 536.039L164.501 342.039M165.212 342.437L930.871 -29.3379M-0.162384 300.527L931.838 -19.4729" stroke="white" stroke-opacity="0.4"/>
+<svg width="878" height="535" viewBox="0 0 878 535" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="877.245" y1="1.43597" x2="243.245" y2="357.436" stroke="#FEFEFE" stroke-opacity="0.4"/>
+<line x1="877.408" y1="1.2885" x2="528.408" y2="495.289" stroke="#FEFEFE" stroke-opacity="0.4"/>
+<line x1="243.067" y1="357.007" x2="185.475" y2="534.155" stroke="#FEFEFE" stroke-opacity="0.4"/>
+<line x1="184.695" y1="533.604" x2="876.695" y2="0.603909" stroke="#FEFEFE" stroke-opacity="0.4"/>
+<line x1="184.502" y1="534.045" x2="167.502" y2="344.045" stroke="#FEFEFE" stroke-opacity="0.4"/>
+<line x1="167.782" y1="343.55" x2="876.782" y2="0.549925" stroke="#FEFEFE" stroke-opacity="0.4"/>
+<line x1="0.811301" y1="357.537" x2="876.811" y2="0.536976" stroke="#FEFEFE" stroke-opacity="0.4"/>
+<line x1="243.217" y1="357.549" x2="528.217" y2="494.549" stroke="#FEFEFE" stroke-opacity="0.4"/>
+<line x1="167.992" y1="344.408" x2="1.04205" y2="358.498" stroke="#FEFEFE" stroke-opacity="0.4"/>
 </svg>
