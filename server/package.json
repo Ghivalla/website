@@ -4,11 +4,16 @@
   "description": "server to handle some request from my personal website website",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon './server.js'"
   },
   "author": "ghivalla",
   "license": "ISC",
   "dependencies": {
-    "@sendgrid/mail": "^6.5.3"
+    "@sendgrid/mail": "^6.5.3",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
