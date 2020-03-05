@@ -69,7 +69,7 @@ export default {
       }).then(response => {
         if (response.status === 200) {
           console.log("mail sent");
-          this.mail = "";
+          this.email = "";
           this.name = "";
           this.message = "";
         } else {
