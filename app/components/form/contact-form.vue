@@ -9,9 +9,7 @@
           can.
         </p>
         <p>
-          <a href="mailto:ghivalla@gmail.com"
-            >You can also send me an email : ghivalla@gmail.com</a
-          >
+          <a href="mailto:ghivalla@gmail.com">You can also send me an email : ghivalla@gmail.com</a>
         </p>
         <p>response time < 12hours</p>
       </div>
@@ -21,12 +19,7 @@
         <div class="fields">
           <TextField :title="nameLabel" v-model="name" required />
           <TextField :title="emailLabel" v-model="email" required />
-          <TextField
-            :title="messageLabel"
-            v-model="message"
-            required
-            textarea
-          />
+          <TextField :title="messageLabel" v-model="message" required textarea />
 
           <input type="submit" :value="buttonLabel" class="button" />
         </div>
@@ -58,7 +51,17 @@ export default {
   components: { TextField },
   methods: {
     sendForm() {
-      console.log("sending");
+      fetch("http://localhost:3001/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message
+        })
+      }).then(response => {
+        console.log(response);
+      });
     }
   }
 };
