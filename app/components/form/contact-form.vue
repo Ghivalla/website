@@ -62,9 +62,9 @@ export default {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: name,
-          email: email,
-          message: message
+          name: this.name,
+          email: this.email,
+          message: this.message
         })
       }).then(response => {
         if (response.status === 200) {
