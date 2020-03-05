@@ -4,6 +4,8 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const express = require('express')
 const app = express()
 app.use(express.json());
+const cors = require('cors');
+app.use(cors());
 
 app.post('/send-email', function (req, res) {
     const { email, name, message } = req.body
