@@ -51,13 +51,13 @@ export default {
   components: { TextField },
   methods: {
     sendForm() {
-      fetch("http://localhost:3001/send-email", {
+      fetch("https://www.ghivalla.com/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: name,
-          email: email,
-          message: message
+          name: this.name,
+          email: this.email,
+          message: this.message
         })
       }).then(response => {
         console.log(response);
