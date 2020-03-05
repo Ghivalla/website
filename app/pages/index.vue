@@ -2,7 +2,8 @@
   <div class="wrapper">
     <CanvasWave />
     <div class="cta">
-      <h1 class="name">{{ name }}</h1>
+      <h1 class="name h1">{{ name }}</h1>
+      <p>Currently looking for job opportunities</p>
       <nuxt-link to="/" class="button">Hire Me</nuxt-link>
     </div>
   </div>
@@ -30,25 +31,17 @@ export default {
   display: flex
   width: 100vw
   min-height: 100vh
-  margin: 0px
-  padding: 0px
 
   .cta
     display: flex
     flex-direction: column
     align-items: center
     justify-content: center
-    position: fixed
-    top: 50%
-    left: 50%
-    margin-left: -150px
-    margin-top: -70px
-    max-width: 300px
-    max-height: 140px
 
     .name
-      font-size: 80px
-      margin-bottom: 32px
+      margin-bottom: 16px
+    p
+      margin-bottom: 20px
 
     .button
       background-color: transparent

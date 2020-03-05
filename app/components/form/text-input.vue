@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="inner-field" :class="{ error: error }">
-      <label :for="title">
-        {{ title }}
-      </label>
+      <label :for="title">{{ title }}</label>
       <textarea
         v-if="textarea"
         :id="title"
@@ -66,12 +64,12 @@ input, textarea
   font-family: 'Fellix', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
   &:focus
     outline: none
-    border: 1px solid green
+    border: 5px solid #5D9FE8
   &:disabled
     background: rgba($grey, 0.3)
 textarea
-    padding: 16px 16px
-    height: 200px
+  padding: 16px 16px
+  height: 200px
 p.error
   margin-top: 4px
   font-size: 14px

@@ -1,2 +1,4 @@
 #ignore all sass file
 *.sass
+*.scss
+**/sass/*.sass

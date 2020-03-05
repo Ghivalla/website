@@ -68,6 +68,7 @@ section
   section
     border-top: 1px solid $sep
     position: static
+    background-color: rgb(0,0,100)
     footer
       grid-template-columns: 1fr
       padding: 40px 0

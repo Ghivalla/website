@@ -9,9 +9,7 @@
           :key="link.title"
           @click="changePage(link.title)"
         >
-          <nuxt-link :to="link.href">
-            {{ link.title.toUpperCase() }}
-          </nuxt-link>
+          <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
         </li>
       </ul>
       <SocialMediaList />
@@ -40,9 +38,7 @@
           :key="link.title"
           @click="changePage(link.title)"
         >
-          <nuxt-link :to="link.href">
-            {{ link.title.toUpperCase() }}
-          </nuxt-link>
+          <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -66,8 +62,8 @@ export default {
   },
   methods: {
     changePage(page) {
-      this.currentPage = page.toLowerCase();
       this.toggleMobileMenu();
+      this.currentPage = page.toLowerCase();
     },
     hideDropdowns() {
       this.openedDropdown = null;
@@ -99,21 +95,21 @@ export default {
 .hidden
   display: none
 .navigation
-	position: fixed
-	top: 40px
-	left: 40px
+  position: fixed
+  top: 40px
+  left: 40px
 
-	.link
-		padding-left: 16px
+  .link
+    padding-left: 16px
 
-	.link a
-		color: rgba($white,0.4)
+  .link a
+    color: rgba($white,0.4)
 
-	.selected a, .link a:hover
-		transition: all 0.5s
-		color: $white
+  .selected a, .link a:hover
+    transition: all 0.5s
+    color: $white
 .navigation.mobile
-  background-color: rgb(0,0,100)
+  background-color: #000064
   display: none
   padding: 0
   .topbar
@@ -156,17 +152,18 @@ export default {
     width: 100%
     display: flex
     flex-direction: column
-    border: 1px solid $sep
+    border-bottom: 1px solid $sep
+    background-color: #000064
     .link
       padding: 18px 24px
       font-weight: 500
       width: 100%
 
-      &:nth-last-child(2)
-        border-bottom: 1px solid $sep
+      &:last-child
+        margin-bottom: 40px
 
-    .link:not(:first-child)
-      border-top: 1px solid $sep
+      &:first-child
+        margin-top: 40px
 
 @media screen and (max-width: 1800px)
   .navigation

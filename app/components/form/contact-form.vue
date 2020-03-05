@@ -9,9 +9,7 @@
           can.
         </p>
         <p>
-          <a href="mailto:ghivalla@gmail.com"
-            >You can also send me an email : ghivalla@gmail.com</a
-          >
+          <a href="mailto:ghivalla@gmail.com">You can also send me an email : ghivalla@gmail.com</a>
         </p>
         <p>response time < 12hours</p>
       </div>
@@ -21,13 +19,7 @@
         <div class="fields">
           <TextField :title="nameLabel" v-model="name" required />
           <TextField :title="emailLabel" v-model="email" required />
-          <TextField
-            :title="messageLabel"
-            v-model="message"
-            required
-            textarea
-          />
-
+          <TextField :title="messageLabel" v-model="message" required textarea />
           <input type="submit" :value="buttonLabel" class="button" />
         </div>
       </form>
@@ -102,7 +94,7 @@ export default {
       p
         font-weight: 500
         &:not(:last-child)
-            margin-bottom: 16px
+          margin-bottom: 16px
 .fields
   display: -ms-grid
   display: grid
@@ -124,9 +116,12 @@ input[type="submit"]
   background-color: transparent
   border: 1px solid $white
   border-radius: 4px
-  padding: 18px 25px 19px
   &:hover
     background-color: rgba(white,0.1)
+
+  &:focus
+    outline: none
+    border: 5px solid #5D9FE8
 
 @media screen and (max-width: 1000px)
   .wrapper
@@ -146,9 +141,9 @@ input[type="submit"]
   .wrapper
     padding-top: 100px
 
-    input[type="submit"]
-        max-width: none
-        margin: 0
+  input[type="submit"]
+    max-width: none
+    margin: 0
 @media screen and (max-width: 520px)
   .fields
     display: block
