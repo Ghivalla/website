@@ -1,24 +1,24 @@
 <template>
-	<ul class="social-media">
-      <li class="icon" v-for="media in socialMedia">
-        <a :href="media.link.href" target="_blank">
-          <SvgIcon bg="white" :icon="media.image" />
-        </a>
-      </li>
-    </ul>
+  <ul class="social-media">
+    <li class="icon" v-for="media in socialMedia" :key="media.title">
+      <a :href="media.link.href" target="_blank">
+        <SvgIcon bg="white" :icon="media.image" />
+      </a>
+    </li>
+  </ul>
 </template>
 <script>
-import SvgIcon from '@/components/svg-icon'
-import Lang from '@/components/langSwitcher'
-import { mapState } from 'vuex'
+import SvgIcon from "@/components/svg-icon";
+import Lang from "@/components/langSwitcher";
+import { mapState } from "vuex";
 export default {
-	computed: {
-		...mapState({
-			socialMedia: state => state.profile.socialMedia,
-		})
-	},
-	components: {SvgIcon, Lang},
-}
+  computed: {
+    ...mapState({
+      socialMedia: state => state.profile.socialMedia
+    })
+  },
+  components: { SvgIcon, Lang }
+};
 </script>
 <style lang="sass" scoped>
 .social-media
@@ -30,4 +30,9 @@ export default {
 
 	.icon:not(:last-child)
 		margin-right: 12px
+
+@media screen and (max-width: 1800px)
+  .social-media
+    position: static
+    display: flex
 </style>

@@ -1,16 +1,14 @@
 <template>
   <div class="container">
-    <Navbar/>
-    <SocialMediaList/>
+    <Navbar />
     <nuxt />
-    <Footer/>
+    <Footer />
   </div>
 </template>
 <script>
-import SocialMediaList from '@/components/social-media-list'
-import Navbar from '@/components/nav'
-import Footer from '@/components/footer'
+import Navbar from "@/components/nav";
+import Footer from "@/components/footer";
 export default {
-  components: { SocialMediaList, Navbar, Footer }
-}
+  components: { Navbar, Footer }
+};
 </script>

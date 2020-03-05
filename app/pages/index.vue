@@ -2,8 +2,8 @@
   <div class="wrapper">
     <CanvasWave />
     <div class="cta">
-      <h1 class="name">{{name}}</h1>
-      <button class="button" @mouseover="frenzy = true">Hire Me</button>
+      <h1 class="name">{{ name }}</h1>
+      <nuxt-link to="/" class="button">Hire Me</nuxt-link>
     </div>
   </div>
 </template>
@@ -56,8 +56,8 @@ export default {
       border-radius: 4px
       padding: 18px 25px 19px
       width: 150px
+      text-align: center
 
       &:hover
         background-color: rgba(white,0.1)
-
 </style>
