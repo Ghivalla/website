@@ -113,6 +113,7 @@ export default {
 		transition: all 0.5s
 		color: $white
 .navigation.mobile
+  background-color: rgb(0,0,100)
   display: none
   padding: 0
   .topbar
@@ -153,7 +154,6 @@ export default {
 
   .menu-list
     width: 100%
-    background-color: rgb(0,0,100)
     display: flex
     flex-direction: column
     border: 1px solid $sep

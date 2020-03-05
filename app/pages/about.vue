@@ -1,14 +1,10 @@
 <template>
   <div class="wrapper">
-    <img
-      src="../assets/images/ghivalla.svg"
-      alt="drawing of Ghivalla"
-      class="portrait"
-    />
-    <div class="about">
-      <h1 class="title">{{ title }}</h1>
-      <p>{{ article }}</p>
+    <h1 class="title h1">{{ title }}</h1>
+    <div class="picture">
+      <img src="../assets/images/ghivalla.svg" alt="drawing of Ghivalla" />
     </div>
+    <p class="content">{{ article }}</p>
   </div>
 </template>
 <script>
@@ -25,16 +21,35 @@ export default {
 
 <style lang="sass" scoped>
 .wrapper
-  display: flex
-  justify-content: space-between
-  padding-top: 200px;
+  display: grid
+  grid-template-areas: "p t" "p c"
+  grid-template-rows: 100px 1fr
+  grid-template-columns: 500px 1fr
+  gap: 25px
+  margin-top: 80px
 
-  .portrait
+  .picture
     max-width: 500px
     width: 100%
-  .about
-    padding: 0 48px
-    .title
-      font-size: 80px
-      margin-bottom: 24px
+    grid-area: p
+  .title
+    margin-bottom: 24px
+    grid-area: t
+    align-self: end
+  .content
+    grid-area: c
+
+@media screen and (max-width: 900px)
+  .wrapper
+    grid-template-areas: "t" "p" "c"
+    grid-template-rows: auto
+    grid-template-columns: 1fr
+
+    .picture
+      width: 100%
+      max-width: 600px
+
+@media screen and (max-width: 900px)
+  .wrapper
+    padding-top: 50px
 </style>
