@@ -64,7 +64,7 @@ input, textarea
   font-family: 'Fellix', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
   &:focus
     outline: none
-    border: 5px solid #5D9FE8
+    border: 5px solid $secondary
   &:disabled
     background: rgba($grey, 0.3)
 textarea

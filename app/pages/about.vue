@@ -4,11 +4,15 @@
     <div class="picture">
       <img src="../assets/images/ghivalla.svg" alt="drawing of Ghivalla" />
     </div>
-    <p class="content">{{ article.body }}</p>
+    <div class="content">
+      <div v-html="article.body" />
+      <SocialMedia />
+    </div>
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
+import SocialMedia from "@/components/social-media-list";
 export default {
   computed: {
     article() {
@@ -21,7 +25,8 @@ export default {
       id: "about-me-page"
     });
     return { aboutPage };
-  }
+  },
+  components: { SocialMedia }
 };
 </script>
 
@@ -32,6 +37,7 @@ export default {
   grid-template-rows: 100px 1fr
   grid-template-columns: 500px 1fr
   gap: 25px
+  column-gap: 100px
   margin-top: 80px
 
   .picture
@@ -42,8 +48,13 @@ export default {
     margin-bottom: 24px
     grid-area: t
     align-self: end
-  .content
+  .content /deep/
     grid-area: c
+    margin-bottom: 64px
+    p
+      margin-bottom: 16px
+      &:last-child
+        margin-bottom: 32px
 
 @media screen and (max-width: 900px)
   .wrapper

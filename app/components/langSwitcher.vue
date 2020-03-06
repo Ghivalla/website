@@ -1,6 +1,12 @@
 <template>
-  <div class="dropdown" :class="{ 'opened' : active }" @click="active=!active">
-    <div class="dropdown-trigger">
+  <div
+    class="dropdown"
+    :class="{ 'opened' : active }"
+    @click="active=!active"
+    @keyup.enter="active=!active"
+    @keyup.escape="active=false"
+  >
+    <div class="dropdown-trigger" role="button" tabindex="0" :aria-pressed="active">
       <img class="lazyload country-image" :src="currentLocale.src" />
       <div>{{ currentLocale.alt.toUpperCase() }}</div>
     </div>
@@ -10,7 +16,9 @@
           v-for="lang in availableLocales"
           :key="lang.alt"
           @click="switchLang(lang.alt)"
+          @keyup.enter="switchLang(lang.alt)"
           class="lang-item"
+          tabindex="0"
         >
           <img class="lazyload country-image" :src="lang.src" />
           {{lang.desc}}
@@ -25,7 +33,8 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      active: false
+      active: false,
+      showLangDropDown: false
     };
   },
   computed: {
@@ -48,7 +57,7 @@ export default {
   },
   methods: {
     switchLang(lang) {
-      this.openedDropdown = false;
+      this.active = false;
       window.location.href = this.switchLocalePath(lang);
     }
   }
@@ -59,27 +68,33 @@ export default {
   position: relative
 
   .country-image
-    width: 16px
-    margin-right: 5px
+    width: 20px
+    margin-right: 10px
 
   .dropdown-menu
     background: $white
     border-radius: 4px
-    box-shadow: 0 0 1px 0 rgba(0,0,0,0.16), 0 24px 24px 0 rgba(0,0,0,0.05), 0 2px 2px 0 rgba(0,0,0,0.05), 0 4px 4px 0 rgba(0,0,0,0.05), 0 8px 8px 0 rgba(0,0,0,0.05), 0 16px 16px 0 rgba(0,0,0,0.05)
     margin-top: 18px
     opacity: 0
     position: absolute
     top: 50%
     right: 0
     visibility: hidden
-    width: 120px
+    width: 150px
 
     .lang-item
-      height: 46px
+      padding: 20px 5px
       display: flex
       align-items: center
       &:hover
         cursor: pointer
+        background-color: $tertiary
+        border-radius: 4px
+      &:focus
+        outline: none
+        border: 5px solid $secondary
+        padding: 15px 0px
+        border-radius: 4px
 
     .country-image
       margin-left: 16px
@@ -97,7 +112,10 @@ export default {
     border-radius: 5px
     padding: 7px
     height: 40px
-    width: 60px
+    width: 80px
+    &:focus
+      outline: none
+      border: 5px solid $secondary
 
   &.opened
     .dropdown-menu

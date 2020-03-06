@@ -55,4 +55,9 @@ export default {
 
       &:hover
         background-color: rgba(white,0.1)
+
+      &:focus
+        outline: none
+        border: 5px solid $secondary
+        padding: 14px 21px 15px
 </style>

@@ -1,6 +1,7 @@
 <template>
   <nav>
     <div class="navigation desktop">
+      <LangSwitcher />
       <ul>
         <li
           class="link h3"
@@ -12,7 +13,6 @@
           <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
         </li>
       </ul>
-      <LangSwitcher />
     </div>
     <div class="navigation mobile">
       <div class="topbar">
@@ -21,7 +21,7 @@
           class="menu-button"
           @click="toggleMobileMenu"
           role="button"
-          tabindex="0"
+          tabindex="1"
           :aria-pressed="showMobileMenu"
         >
           MENU
@@ -102,6 +102,7 @@ export default {
   padding: 40px
   width: 100%
   display: flex
+  flex-direction: row-reverse
   justify-content: space-between
 
   .link

@@ -8,7 +8,7 @@ const getEntries = async (
   const contentful = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-    timeout: 500000
+    host: "preview.contentful.com"
   });
 
   const mapping = getMapping(locale);
