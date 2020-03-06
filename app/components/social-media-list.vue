@@ -22,14 +22,14 @@ export default {
 </script>
 <style lang="sass" scoped>
 .social-media
-	display: flex
-	max-width: 200px
-	position: fixed
-	top: 40px
-	right: 40px
+  display: flex
+  max-width: 200px
+  position: fixed
+  top: 40px
+  right: 40px
 
-	.icon:not(:last-child)
-		margin-right: 12px
+  .icon:not(:last-child)
+    margin-right: 12px
 
 @media screen and (max-width: 1800px)
   .social-media

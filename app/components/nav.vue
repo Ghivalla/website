@@ -12,10 +12,11 @@
           <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
         </li>
       </ul>
-      <SocialMediaList />
+      <LangSwitcher />
     </div>
     <div class="navigation mobile">
       <div class="topbar">
+        <LangSwitcher />
         <div
           class="menu-button"
           @click="toggleMobileMenu"
@@ -46,7 +47,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
-import SocialMediaList from "@/components/social-media-list";
+import LangSwitcher from "@/components/langSwitcher";
 export default {
   data() {
     return {
@@ -88,7 +89,7 @@ export default {
     let route = pathArray[0] === "fr" ? pathArray[1] : pathArray[0];
     this.currentPage = route ? route : this.navbar[0].title.toLowerCase();
   },
-  components: { SocialMediaList }
+  components: { LangSwitcher }
 };
 </script>
 <style lang="sass" scoped>
@@ -96,8 +97,12 @@ export default {
   display: none
 .navigation
   position: fixed
-  top: 40px
-  left: 40px
+  top: 0px
+  left: 0px
+  padding: 40px
+  width: 100%
+  display: flex
+  justify-content: space-between
 
   .link
     padding-left: 16px
@@ -114,7 +119,7 @@ export default {
   padding: 0
   .topbar
     display: flex
-    justify-content: flex-end
+    justify-content: space-between
     padding: 25px
     border-bottom: 1px solid $sep
     .menu-button
@@ -167,12 +172,9 @@ export default {
 
 @media screen and (max-width: 1800px)
   .navigation
-    top: 0
-    left: 0
-    right: 0
-    display: flex
-    justify-content: space-between
     padding: 25px
+    background-color: rgb(0,0,100)
+    border-bottom: 1px solid $sep
     ul
       display: flex
 
