@@ -158,7 +158,7 @@ export default {
     display: flex
     flex-direction: column
     border-bottom: 1px solid $sep
-    background-color: #000064
+    background-color: rgb(0,0,100)
     .link
       padding: 18px 24px
       font-weight: 500
