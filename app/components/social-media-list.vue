@@ -2,7 +2,7 @@
   <ul class="social-media">
     <li class="icon" v-for="media in socialMedia" :key="media.title">
       <a :href="media.link.href" target="_blank">
-        <SvgIcon bg="white" :icon="media.image" />
+        <SvgIcon bg="black" :icon="media.image" />
       </a>
     </li>
   </ul>

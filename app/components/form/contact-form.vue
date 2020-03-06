@@ -63,26 +63,11 @@ export default {
   width: 100%
 
 input[type="submit"]
-  cursor: pointer
   height: 60px
   width: 100%
-  max-width: 200px
+  max-width: 250px
   margin-left: auto
-  user-select: none
-  outline: none
-  white-space: pre
-  transition: border 0.25s ease-out
-  font-size: 16px
-  font-family: 'Fellix', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
-  background-color: transparent
-  border: 1px solid $white
-  border-radius: 4px
-  &:hover
-    background-color: rgba(white,0.1)
-
-  &:focus
-    outline: none
-    border: 5px solid #5D9FE8
+  text-align: center
 
   @media screen and (max-width: 600px)
     max-width: none

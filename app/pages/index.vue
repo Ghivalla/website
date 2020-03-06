@@ -46,18 +46,9 @@ export default {
       margin-bottom: 20px
 
     .button
-      background-color: transparent
-      border: 1px solid $white
-      border-radius: 4px
-      padding: 18px 25px 19px
+      height: 50px
       width: 150px
-      text-align: center
-
-      &:hover
-        background-color: rgba(white,0.1)
-
-      &:focus
-        outline: none
-        border: 5px solid $secondary
-        padding: 14px 21px 15px
+      display: flex
+      justify-content: center
+      align-items: center
 </style>

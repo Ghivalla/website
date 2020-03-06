@@ -20,9 +20,9 @@ export default {
       },
 
       bgColor: {
-        r: 0,
-        g: 0,
-        b: 100,
+        r: 250,
+        g: 250,
+        b: 250,
         a: 0.1
       },
 
@@ -100,8 +100,8 @@ export default {
 </script>
 <style lang="sass" scoped>
 canvas
-   position: fixed
-   z-index: -2
-   top: 0
-   left: 0
+  position: fixed
+  z-index: -2
+  top: 0
+  left: 0
 </style>

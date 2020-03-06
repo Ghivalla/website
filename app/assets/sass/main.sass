@@ -15,14 +15,40 @@
     outline-color: $secondary 
 body
   box-sizing: border-box
-  background-color: $primary
-  color: $white
+  background-color: $light-grey
+  color: $black
+  font-family: 'Roboto', sans-serif
   
 
 button
   appearance: none
   border: none
   outline: none
+
+.button
+  border: none
+  border-radius: 2px
+  padding: 12px 18px
+  text-transform: uppercase
+  cursor: pointer
+  color: white
+  background-color: #2196f3
+  box-shadow: 0 0 4px #999
+  outline: none
+  background-position: center
+  transition: background 0.8s
+
+  &:hover,
+    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%
+  
+  &:focus
+    border: 5px solid $secondary
+    padding: 7px 13px
+    
+  &:active 
+    background-color: #6eb9f7
+    background-size: 100%
+    transition: background 0s
 
 .wrapper
   padding: 96px 24px
@@ -45,7 +71,6 @@ button
       
 .pageUp, .page-leave-to
   opacity: 0
-
 
 @media screen and (max-width: 800px)
   .wrapper

@@ -38,35 +38,38 @@ export default {
   grid-template-columns: 500px 1fr
   gap: 25px
   column-gap: 100px
-  margin-top: 80px
+  margin-top: 60px
 
   .picture
-    max-width: 500px
+    max-width: 300px
     width: 100%
     grid-area: p
-  .title
-    margin-bottom: 24px
+  .h1
+    margin-bottom: 32px
     grid-area: t
     align-self: end
   .content /deep/
     grid-area: c
-    margin-bottom: 64px
-    p
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    div p
       margin-bottom: 16px
       &:last-child
-        margin-bottom: 32px
-
-@media screen and (max-width: 900px)
+        margin-bottom: 64px
+@media screen and (max-width: 1800px)
+  .wrapper
+    column-gap: 150px
+    grid-template-columns: auto 1fr
+@media screen and (max-width: 800px)
   .wrapper
     grid-template-areas: "t" "p" "c"
     grid-template-rows: auto
     grid-template-columns: 1fr
+    padding-top: 50px
 
     .picture
       width: 100%
       max-width: 600px
-
-@media screen and (max-width: 900px)
-  .wrapper
-    padding-top: 50px
+      margin-left: auto
 </style>

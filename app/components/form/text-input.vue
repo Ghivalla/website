@@ -51,7 +51,7 @@ export default {
   margin-bottom: 24px
 label
   font-weight: 500
-  color: white
+  color: $black
   margin-bottom: 4px
 input, textarea
   appearance: none

@@ -34,7 +34,7 @@
       <ul v-if="showMobileMenu" class="menu-list">
         <li
           class="link h3"
-          :class="{ selected: link.title.toLowerCase() === currentPage }"
+          :class="{ 'selected': link.title.toLowerCase() === currentPage }"
           v-for="link in navbar"
           :key="link.title"
           @click="changePage(link.title)"
@@ -88,6 +88,7 @@ export default {
       .split("/");
     let route = pathArray[0] === "fr" ? pathArray[1] : pathArray[0];
     this.currentPage = route ? route : this.navbar[0].title.toLowerCase();
+    console.log(route);
   },
   components: { LangSwitcher }
 };
@@ -109,13 +110,18 @@ export default {
     padding-left: 16px
 
   .link a
-    color: rgba($white,0.4)
+    color: $grey
+    padding: 5px
+    &:focus
+      outline: none
+      border: 5px solid $secondary
+      padding: 0
 
-  .selected a, .link a:hover
-    transition: all 0.5s
-    color: $white
+  .link.selected a, .link a:hover
+    color: $black
+
 .navigation.mobile
-  background-color: #000064
+  background-color: $white
   display: none
   padding: 0
   .topbar
@@ -126,7 +132,6 @@ export default {
     .menu-button
       font-size: 14px
       letter-spacing: 1px
-      color: $white
       font-weight: 600
       display: flex
       align-items: center
@@ -148,7 +153,7 @@ export default {
     .line
       width: 14px
       height: 2px
-      background: $white
+      background: $black
       transition: transform 0.20s ease-out
 
     .line2
@@ -159,7 +164,6 @@ export default {
     display: flex
     flex-direction: column
     border-bottom: 1px solid $sep
-    background-color: rgb(0,0,100)
     .link
       padding: 18px 24px
       font-weight: 500
@@ -174,14 +178,19 @@ export default {
 @media screen and (max-width: 1800px)
   .navigation
     padding: 25px
-    background-color: rgb(0,0,100)
     border-bottom: 1px solid $sep
+    background-color: $white
     ul
       display: flex
+
+    .link
+      font-size: 16px
 
 @media screen and (max-width: 800px)
   .navigation.desktop
     display: none
   .navigation.mobile
     display: block
+    .link
+      font-size: 26px
 </style>

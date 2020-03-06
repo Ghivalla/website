@@ -10,7 +10,7 @@
       <img class="lazyload country-image" :src="currentLocale.src" />
       <div>{{ currentLocale.alt.toUpperCase() }}</div>
     </div>
-    <div class="dropdown-menu" @mouseleave="active = false">
+    <div class="dropdown-menu u-shadow" @mouseleave="active = false">
       <ul>
         <li
           v-for="lang in availableLocales"
@@ -81,14 +81,15 @@ export default {
     right: 0
     visibility: hidden
     width: 150px
+    border: 1px solid $sep
 
     .lang-item
       padding: 20px 5px
       display: flex
       align-items: center
+      color: $black
       &:hover
         cursor: pointer
-        background-color: $tertiary
         border-radius: 4px
       &:focus
         outline: none

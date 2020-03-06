@@ -39,18 +39,26 @@ export default {
   background-image: url('../assets/images/paperplane.svg')
   background-repeat: no-repeat
   background-size: contain
-  margin-top: 40px
+  background-position: center
+  margin-top: 60px
   .right
     width: calc(100%/2.3)
   .left
     width: calc(100%/2)
+    .h1
+      margin-bottom: 32px
     .subtitle /deep/
       margin: 15px 0
       p
         font-weight: 500
         &:not(:last-child)
           margin-bottom: 16px
+      a
+        color: $black
 
+@media screen and (max-width: 1200px)
+  .wrapper
+    background-image: none
 @media screen and (max-width: 1000px)
   .wrapper
     display: flex

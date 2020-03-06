@@ -1,11 +1,11 @@
-<svg width="878" height="535" viewBox="0 0 878 535" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="877.245" y1="1.43597" x2="243.245" y2="357.436" stroke="#FEFEFE" stroke-opacity="0.4"/>
-<line x1="877.408" y1="1.2885" x2="528.408" y2="495.289" stroke="#FEFEFE" stroke-opacity="0.4"/>
-<line x1="243.067" y1="357.007" x2="185.475" y2="534.155" stroke="#FEFEFE" stroke-opacity="0.4"/>
-<line x1="184.695" y1="533.604" x2="876.695" y2="0.603909" stroke="#FEFEFE" stroke-opacity="0.4"/>
-<line x1="184.502" y1="534.045" x2="167.502" y2="344.045" stroke="#FEFEFE" stroke-opacity="0.4"/>
-<line x1="167.782" y1="343.55" x2="876.782" y2="0.549925" stroke="#FEFEFE" stroke-opacity="0.4"/>
-<line x1="0.811301" y1="357.537" x2="876.811" y2="0.536976" stroke="#FEFEFE" stroke-opacity="0.4"/>
-<line x1="243.217" y1="357.549" x2="528.217" y2="494.549" stroke="#FEFEFE" stroke-opacity="0.4"/>
-<line x1="167.992" y1="344.408" x2="1.04205" y2="358.498" stroke="#FEFEFE" stroke-opacity="0.4"/>
+<svg width="928" height="688" viewBox="0 0 928 688" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="927.49" y1="78.2084" x2="264.609" y2="377.007" stroke="black"/>
+<line x1="927.623" y1="78.1205" x2="489.339" y2="481.368" stroke="black"/>
+<line x1="264.496" y1="376.485" x2="204.486" y2="627.116" stroke="black"/>
+<line x1="203.695" y1="627.604" x2="429.695" y2="453.604" stroke="black"/>
+<line x1="203.501" y1="627.024" x2="190.339" y2="357.023" stroke="black"/>
+<line x1="190.662" y1="356.531" x2="927.107" y2="77.2851" stroke="black"/>
+<line x1="23.1076" y1="355.764" x2="927.137" y2="77.2747" stroke="black"/>
+<line x1="264.524" y1="377.093" x2="489.209" y2="480.546" stroke="black"/>
+<line x1="190.795" y1="357.404" x2="23.2527" y2="356.741" stroke="black"/>
 </svg>
