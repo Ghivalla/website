@@ -3,8 +3,8 @@
     <CanvasWave />
     <div class="cta">
       <h1 class="name h1">{{ name }}</h1>
-      <p>Currently looking for job opportunities</p>
-      <nuxt-link to="/" class="button">Hire Me</nuxt-link>
+      <p>{{ status }}</p>
+      <nuxt-link :to="cta.href" class="button">{{ cta.title }}</nuxt-link>
     </div>
   </div>
 </template>
@@ -17,7 +17,9 @@ export default {
       img: state => state.profile.profilePicture.src,
       name: state => state.profile.name,
       surename: state => state.profile.surename,
-      jobPosition: state => state.profile.jobPosition
+      jobPosition: state => state.profile.jobPosition,
+      status: state => state.profile.status,
+      cta: state => state.profile.cta
     })
   },
   components: { CanvasWave }

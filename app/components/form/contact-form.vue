@@ -1,30 +1,12 @@
 <template>
-  <div class="wrapper">
-    <div class="left">
-      <h1 class="h1">Contact Form</h1>
-      <div class="subtitle">
-        <p>
-          Interested in working together ? Fill out the form below with some
-          information about your project and I will get back to you as soon as I
-          can.
-        </p>
-        <p>
-          <a href="mailto:ghivalla@gmail.com">You can also send me an email : ghivalla@gmail.com</a>
-        </p>
-        <p>response time < 12hours</p>
-      </div>
+  <form @submit.prevent="sendForm" class="form">
+    <div class="fields">
+      <TextField :title="nameLabel" v-model="name" required />
+      <TextField :title="emailLabel" v-model="email" required />
+      <TextField :title="messageLabel" v-model="message" required textarea />
+      <input type="submit" :value="buttonLabel" class="button" />
     </div>
-    <div class="right">
-      <form @submit.prevent="sendForm" class="form">
-        <div class="fields">
-          <TextField :title="nameLabel" v-model="name" required />
-          <TextField :title="emailLabel" v-model="email" required />
-          <TextField :title="messageLabel" v-model="message" required textarea />
-          <input type="submit" :value="buttonLabel" class="button" />
-        </div>
-      </form>
-    </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -74,27 +56,6 @@ export default {
 </script>
 
 <style scoped lang="sass">
-.wrapper
-  display: flex
-  justify-content: space-between
-  align-items: flex-start
-  background-image: url('../../assets/images/paperplane.svg')
-  background-repeat: no-repeat
-  background-size: contain
-  .right
-    width: calc(100%/2.3)
-    h3
-      font-weight: 500
-      font-size: 26px
-      margin-bottom: 50px
-  .left
-    width: calc(100%/2)
-    .subtitle
-      margin: 15px 0
-      p
-        font-weight: 500
-        &:not(:last-child)
-          margin-bottom: 16px
 .fields
   display: -ms-grid
   display: grid
@@ -123,25 +84,7 @@ input[type="submit"]
     outline: none
     border: 5px solid #5D9FE8
 
-@media screen and (max-width: 1000px)
-  .wrapper
-    display: flex
-    flex-wrap: wrap
-    justify-content: center
-    align-items: center
-    padding: 140px 0 64px 0
-    background-position: center
-    .left, .right
-      width: 90%
-      margin-bottom: 50px
-
-@media screen and (max-width: 600px)
-  h2
-    margin-top: 10px
-  .wrapper
-    padding-top: 100px
-
-  input[type="submit"]
+  @media screen and (max-width: 600px)
     max-width: none
     margin: 0
 @media screen and (max-width: 520px)

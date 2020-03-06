@@ -1,20 +1,26 @@
 <template>
   <div class="wrapper">
-    <h1 class="title h1">{{ title }}</h1>
+    <h1 class="title h1">{{ article.title }}</h1>
     <div class="picture">
       <img src="../assets/images/ghivalla.svg" alt="drawing of Ghivalla" />
     </div>
-    <p class="content">{{ article }}</p>
+    <p class="content">{{ article.body }}</p>
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState({
-      title: state => state.article.title,
-      article: state => state.article.body
-    })
+    article() {
+      return this.aboutPage.articles[0];
+    }
+  },
+  async asyncData(ctx) {
+    const aboutPage = await ctx.store.dispatch("getEntries", {
+      content_type: "page",
+      id: "about-me-page"
+    });
+    return { aboutPage };
   }
 };
 </script>

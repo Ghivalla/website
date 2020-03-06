@@ -6,7 +6,7 @@ export default {
   baseUrl: process.env.HOSTNAME || "http://ghivalla.com/",
   locales: [
     { code: "fr", iso: "fr-FR", name: "Français" },
-    { code: "en", iso: "en-US", name: "English" },
+    { code: "en", iso: "en-US", name: "English" }
   ],
   defaultLocale: "en",
 
@@ -17,9 +17,9 @@ export default {
   },
   vuex: {
     // Module namespace
-    moduleName: 'i18n',
+    moduleName: "i18n",
     // If enabled, current app's locale is synced with nuxt-i18n store module
-    syncLocale: true,
+    syncLocale: true
   },
 
   parsePages: false,
