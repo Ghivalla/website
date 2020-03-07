@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
     <div class="left">
-      <h1 class="h1">{{article.title}}</h1>
+      <h1 class="h1">{{ article.title }}</h1>
       <div class="subtitle">
-        <p v-html="article.body" />
+        <p v-html="convertMarkdownToHTML(article.body)" />
       </div>
     </div>
     <div class="right">
@@ -14,7 +14,13 @@
 <script>
 import { mapState } from "vuex";
 import ContactForm from "@/components/form/contact-form";
+import markdownMixin from "@/mixins/markdown";
+import buildHead from "@/utils/seo";
+
 export default {
+  head() {
+    return buildHead(this.contactPage.seo, this.$store);
+  },
   computed: {
     article() {
       return this.contactPage.articles[0];
@@ -27,7 +33,8 @@ export default {
     });
     return { contactPage };
   },
-  components: { ContactForm }
+  components: { ContactForm },
+  mixins: [markdownMixin]
 };
 </script>
 

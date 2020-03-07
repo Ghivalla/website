@@ -34,7 +34,7 @@
       <ul v-if="showMobileMenu" class="menu-list">
         <li
           class="link h3"
-          :class="{ 'selected': link.title.toLowerCase() === currentPage }"
+          :class="{ selected: link.title.toLowerCase() === currentPage }"
           v-for="link in navbar"
           :key="link.title"
           @click="changePage(link.title)"
@@ -51,20 +51,20 @@ import LangSwitcher from "@/components/langSwitcher";
 export default {
   data() {
     return {
-      currentPage: "",
       showMobileMenu: false,
       openedDropdown: null
     };
   },
   computed: {
     ...mapState({
-      navbar: state => state.navbar.navigation
+      navbar: state => state.navbar.navigation,
+      currentPage: state => state.currentPage
     })
   },
   methods: {
     changePage(page) {
       this.toggleMobileMenu();
-      this.currentPage = page.toLowerCase();
+      this.$store.commit("setCurrentPage", page.toLowerCase());
     },
     hideDropdowns() {
       this.openedDropdown = null;

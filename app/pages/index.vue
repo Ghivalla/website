@@ -11,7 +11,18 @@
 <script>
 import { mapState } from "vuex";
 import CanvasWave from "@/components/canvas-wave";
+import buildHead from "@/utils/seo";
 export default {
+  head() {
+    return buildHead(this.indexPage.seo, this.$store);
+  },
+  async asyncData(ctx) {
+    const indexPage = await ctx.store.dispatch("getEntries", {
+      content_type: "page",
+      id: "index-page"
+    });
+    return { indexPage };
+  },
   computed: {
     ...mapState({
       img: state => state.profile.profilePicture.src,

@@ -5,7 +5,7 @@
       <img src="../assets/images/ghivalla.svg" alt="drawing of Ghivalla" />
     </div>
     <div class="content">
-      <div v-html="article.body" />
+      <div v-html="convertMarkdownToHTML(article.body)" />
       <SocialMedia />
     </div>
   </div>
@@ -13,7 +13,13 @@
 <script>
 import { mapState } from "vuex";
 import SocialMedia from "@/components/social-media-list";
+import markdownMixin from "@/mixins/markdown";
+import buildHead from "@/utils/seo";
+
 export default {
+  head() {
+    return buildHead(this.aboutPage.seo, this.$store);
+  },
   computed: {
     article() {
       return this.aboutPage.articles[0];
@@ -26,7 +32,8 @@ export default {
     });
     return { aboutPage };
   },
-  components: { SocialMedia }
+  components: { SocialMedia },
+  mixins: [markdownMixin]
 };
 </script>
 

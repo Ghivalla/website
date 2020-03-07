@@ -1,6 +1,11 @@
 import fetchEntries from "@/api";
 
-export const state = () => ({ currentPage: null });
+export const state = () => ({
+  env: {
+    hostname: null
+  },
+  currentPage: null
+});
 
 export const mutations = {
   setContent: (state, content) => (state.content = content),
@@ -13,7 +18,9 @@ export const mutations = {
 
   setCurrentPage: (state, page) => {
     state.currentPage = page;
-  }
+  },
+
+  setEnv: (state, env) => (state.env = env)
 };
 
 export const getters = {};

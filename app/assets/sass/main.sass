@@ -37,16 +37,16 @@ button
   text-transform: uppercase
   cursor: pointer
   color: white
-  background-color: #2196f3
+  background-color: $blue-grey
   box-shadow: 0 0 4px #999
   background-position: center
   transition: background 0.8s
 
   &:hover,
-    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%
+    background: rgba($blue-grey, 0.8)  radial-gradient(circle, transparent 1%, rgba($blue-grey, 1) 1%) center/15000%
     
   &:active 
-    background-color: #6eb9f7
+    background-color: $blue-grey
     background-size: 100%
     transition: background 0s
 
