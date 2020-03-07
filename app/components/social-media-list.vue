@@ -28,11 +28,6 @@ export default {
   a
     padding: 5px
 
-    &:focus
-      outline: none
-      border: 5px solid $secondary
-      padding: 0
-
 @media screen and (max-width: 1800px)
   .social-media
     position: static

@@ -1,7 +1,6 @@
-import fetchEntries from "@/api/get";
-import fetchContent from "@/api";
+import fetchEntries from "@/api";
 
-export const state = () => ({});
+export const state = () => ({ currentPage: null });
 
 export const mutations = {
   setContent: (state, content) => (state.content = content),
@@ -10,6 +9,10 @@ export const mutations = {
     Object.keys(globals).forEach(el => {
       state[el] = globals[el];
     });
+  },
+
+  setCurrentPage: (state, page) => {
+    state.currentPage = page;
   }
 };
 

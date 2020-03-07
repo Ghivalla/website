@@ -11,13 +11,18 @@
   -webkit-tap-highlight-color: transparent
   box-sizing: border-box
 
-  *:focus
-    outline-color: $secondary 
+
 body
   box-sizing: border-box
   background-color: $light-grey
   color: $black
   font-family: 'Roboto', sans-serif
+
+*:focus
+  outline: 4px solid $black
+
+body.using-mouse *:focus 
+  outline: none
   
 
 button
@@ -34,16 +39,11 @@ button
   color: white
   background-color: #2196f3
   box-shadow: 0 0 4px #999
-  outline: none
   background-position: center
   transition: background 0.8s
 
   &:hover,
     background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%
-  
-  &:focus
-    border: 5px solid $secondary
-    padding: 7px 13px
     
   &:active 
     background-color: #6eb9f7
@@ -66,11 +66,7 @@ button
       box-shadow: 0 0 1px 0 rgba(#18332F, 0.24), 0 24px 24px 0 rgba(#18332F, 0.03), 0 2px 2px 0 rgba(#18332F, 0.03), 0 4px 4px 0 rgba(#18332F, 0.03), 0 8px 8px 0 rgba(#18332F, 0.03), 0 16px 16px 0 rgba(#18332F, 0.03)
 
 
-.pageUp-enter-active, .page-leave-active
-  transition: opacity .5s
-      
-.pageUp, .page-leave-to
-  opacity: 0
+
 
 @media screen and (max-width: 800px)
   .wrapper

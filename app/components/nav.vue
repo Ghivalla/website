@@ -5,10 +5,10 @@
       <ul>
         <li
           class="link h3"
-          :class="{ selected: link.title.toLowerCase() === currentPage }"
           v-for="link in navbar"
           :key="link.title"
           @click="changePage(link.title)"
+          :class="{ selected: link.title.toLowerCase() === currentPage }"
         >
           <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
         </li>
@@ -81,15 +81,6 @@ export default {
       this.openedDropdown = this.openedDropdown !== name ? name : null;
     }
   },
-  mounted() {
-    let pathArray = this.$route.path
-      .substring(1)
-      .replace(/\/$/, "")
-      .split("/");
-    let route = pathArray[0] === "fr" ? pathArray[1] : pathArray[0];
-    this.currentPage = route ? route : this.navbar[0].title.toLowerCase();
-    console.log(route);
-  },
   components: { LangSwitcher }
 };
 </script>
@@ -111,14 +102,8 @@ export default {
 
   .link a
     color: $grey
-    padding: 5px
-    font-weight: bold
-    &:focus
-      outline: none
-      border: 5px solid $secondary
-      padding: 0
 
-  .link.selected a, .link a:hover
+  .selected a, .link a:hover
     color: $black
 
 .navigation.mobile

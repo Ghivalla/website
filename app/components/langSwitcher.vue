@@ -7,8 +7,10 @@
     @keyup.escape="active=false"
   >
     <div class="dropdown-trigger" role="button" tabindex="0" :aria-pressed="active">
-      <img class="lazyload country-image" :src="currentLocale.src" />
-      <div>{{ currentLocale.alt.toUpperCase() }}</div>
+      <span class="dropdown-trigger-content" tabindex="-1">
+        <img class="lazyload country-image" :src="currentLocale.src" />
+        <div>{{ currentLocale.alt.toUpperCase() }}</div>
+      </span>
     </div>
     <div class="dropdown-menu u-shadow" @mouseleave="active = false">
       <ul>
@@ -77,7 +79,7 @@ export default {
     margin-top: 18px
     opacity: 0
     position: absolute
-    top: 50%
+    top: 45%
     right: 0
     visibility: hidden
     width: 150px
@@ -91,32 +93,25 @@ export default {
       &:hover
         cursor: pointer
         border-radius: 4px
-      &:focus
-        outline: none
-        border: 5px solid $secondary
-        padding: 15px 0px
-        border-radius: 4px
 
     .country-image
       margin-left: 16px
       margin-right: 8px
 
   .dropdown-trigger
-    display: flex
-    align-items: center
-    justify-content: center
-    cursor: pointer
-    font-size: 14px
-    transition: color 0.2s ease-out
-    border: 1px solid #CECECE
-    box-sizing: border-box
-    border-radius: 5px
-    padding: 7px
-    height: 40px
-    width: 80px
-    &:focus
-      outline: none
-      border: 5px solid $secondary
+    &-content
+      display: flex
+      align-items: center
+      justify-content: center
+      cursor: pointer
+      font-size: 14px
+      transition: color 0.2s ease-out
+      border: 1px solid #CECECE
+      box-sizing: border-box
+      border-radius: 5px
+      padding: 7px
+      height: 40px
+      width: 80px
 
   &.opened
     .dropdown-menu
