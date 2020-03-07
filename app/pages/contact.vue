@@ -2,12 +2,10 @@
   <div class="wrapper">
     <div class="left">
       <h1 class="h1">{{ article.title }}</h1>
-      <div class="subtitle">
-        <p v-html="convertMarkdownToHTML(article.body)" />
-      </div>
+      <div class="subtitle" v-html="convertMarkdownToHTML(article.body)" />
     </div>
     <div class="right">
-      <ContactForm />
+      <ContactForm :content="contactForm" />
     </div>
   </div>
 </template>
@@ -31,10 +29,17 @@ export default {
       content_type: "page",
       id: "contact-page"
     });
-    return { contactPage };
+    const contactForm = await ctx.store.dispatch("getEntries", {
+      content_type: "form",
+      id: "contact-form"
+    });
+    return { contactPage, contactForm };
   },
   components: { ContactForm },
-  mixins: [markdownMixin]
+  mixins: [markdownMixin],
+  mounted() {
+    console.log(this.contactForm);
+  }
 };
 </script>
 

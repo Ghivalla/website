@@ -28,7 +28,7 @@ export const getters = {};
 export const actions = {
   async nuxtServerInit({ state, commit }) {
     const globals = await fetchEntries(state.i18n.locale, {
-      content_type: ["profile", "navbar", "form"]
+      content_type: ["profile", "navbar"]
     });
     commit("setGlobals", globals);
   },

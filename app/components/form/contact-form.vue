@@ -1,10 +1,26 @@
 <template>
   <form @submit.prevent="sendForm" class="form">
     <div class="fields">
-      <TextField :title="nameLabel" v-model="name" required />
-      <TextField :title="emailLabel" v-model="email" required />
-      <TextField :title="messageLabel" v-model="message" required textarea />
-      <input type="submit" :value="buttonLabel" class="button" />
+      <TextField
+        :title="content.nameLabel"
+        v-model="name"
+        :error="errors.name"
+        required
+      />
+      <TextField
+        :title="content.emailLabel"
+        v-model="email"
+        :error="errors.email"
+        required
+      />
+      <TextField
+        :title="content.messageLabel"
+        :error="errors.message"
+        v-model="message"
+        required
+        textarea
+      />
+      <input type="submit" :value="content.buttonLabel" class="button" />
     </div>
   </form>
 </template>
@@ -12,26 +28,38 @@
 <script>
 import { mapState } from "vuex";
 import TextField from "@/components/form/text-input";
+const EMAIL_REGEX = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
 export default {
-  props: ["data"],
+  props: ["content"],
   data() {
     return {
       name: null,
       email: null,
-      message: null
+      message: null,
+      errors: {
+        email: null,
+        name: null,
+        message: null
+      }
     };
   },
   computed: {
-    ...mapState({
-      nameLabel: state => state.form.nameLabel,
-      emailLabel: state => state.form.emailLabel,
-      messageLabel: state => state.form.messageLabel,
-      buttonLabel: state => state.form.buttonLabel
-    })
+    hasErrors() {
+      return Object.keys(this.errors)
+        .map(key => this.errors[key])
+        .some(f => f !== null);
+    },
+    trimmedEmail() {
+      if (!this.email) return null;
+      return this.email.trim();
+    }
   },
   components: { TextField },
   methods: {
     sendForm() {
+      this.checkAll();
+      if (this.hasErrors) return;
       fetch("https://www.ghivalla.com/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -50,6 +78,36 @@ export default {
           console.log("oops");
         }
       });
+    },
+    checkAll() {
+      this.checkEmail();
+      this.checkName();
+      this.checkMessage();
+    },
+    checkEmail() {
+      this.$set(
+        this.errors,
+        "email",
+        this.trimmedEmail &&
+          this.trimmedEmail.length &&
+          EMAIL_REGEX.test(this.trimmedEmail)
+          ? null
+          : this.content.errorMessageFormat
+      );
+    },
+    checkName() {
+      this.$set(
+        this.errors,
+        "name",
+        this.name.trim() ? null : this.content.errorMessageEmpty
+      );
+    },
+    checkMessage() {
+      this.$set(
+        this.errors,
+        "message",
+        this.message.trim() ? null : this.content.errorMessageEmpty
+      );
     }
   }
 };
