@@ -52,7 +52,7 @@ export default {
     grid-area: c
     display: flex
     flex-direction: column
-    justify-content: space-between
+    justify-content: space
     div p
       margin-bottom: 16px
       &:last-child
@@ -70,6 +70,10 @@ export default {
 
     .picture
       width: 100%
-      max-width: 600px
+      max-width: 300px
       margin-left: auto
+@media screen and (max-width: 600px)
+  .wrapper
+    .picture
+      max-width: 250px
 </style>

@@ -112,6 +112,7 @@ export default {
   .link a
     color: $grey
     padding: 5px
+    font-weight: bold
     &:focus
       outline: none
       border: 5px solid $secondary
