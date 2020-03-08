@@ -100,6 +100,13 @@ a
     &:hover
       box-shadow: 0 0 1px 0 rgba(#18332F, 0.24), 0 24px 24px 0 rgba(#18332F, 0.03), 0 2px 2px 0 rgba(#18332F, 0.03), 0 4px 4px 0 rgba(#18332F, 0.03), 0 8px 8px 0 rgba(#18332F, 0.03), 0 16px 16px 0 rgba(#18332F, 0.03)
 
+.page-enter-active, .page-leave-active 
+  transition: opacity .3s
+
+.page-enter, .page-leave-active 
+  opacity: 0
+      
+      
 @media screen and (max-width: 800px)
   .wrapper
     padding: 48px 24px

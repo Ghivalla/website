@@ -6,7 +6,7 @@
         <li
           v-for="link in navbar"
           :key="link.title"
-          @click="changePage(link.title)"
+          @click="changePage(link)"
           :class="{ selected: link.title.toLowerCase() === currentPage }"
         >
           <span class="link">
@@ -40,7 +40,7 @@
           :class="{ selected: link.title.toLowerCase() === currentPage }"
           v-for="link in navbar"
           :key="link.title"
-          @click="changePage(link.title)"
+          @click="changePage(link)"
         >
           <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
         </li>
@@ -65,9 +65,13 @@ export default {
     })
   },
   methods: {
-    changePage(page) {
+    changePage(link) {
+      console.log(link);
       this.toggleMobileMenu();
-      this.$store.commit("setCurrentPage", page.toLowerCase());
+      this.$store.commit("setCurrentPage", link.title.toLowerCase());
+      this.$router.push({
+        path: link.href
+      });
     },
     hideDropdowns() {
       this.openedDropdown = null;
@@ -104,11 +108,14 @@ export default {
     margin-bottom: 10px
     overflow: hidden
     padding: 6px
+    &:hover
+      cursor: pointer
   .link
     font-size: 20px
     width: 200px
     position: relative
     transition: all 0.3s linear
+
     a
       color: $grey
 
