@@ -56,7 +56,26 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [["nuxt-i18n", i18nConfig], "@nuxtjs/style-resources", "nuxt-i18n"],
+  modules: [
+    ["nuxt-i18n", i18nConfig],
+    "@nuxtjs/style-resources",
+    "nuxt-i18n",
+    [
+      "@nuxtjs/robots",
+      [
+        {
+          UserAgent: "*",
+          Allow: "/"
+        },
+        {
+          Disallow: "/contact/success"
+        },
+        {
+          Disallow: "/fr/contact/succes"
+        }
+      ]
+    ]
+  ],
   styleResources: {
     sass: ["./assets/sass/_vars.sass", "./assets/_mixins.sass"]
   },
