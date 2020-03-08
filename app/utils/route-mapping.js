@@ -9,8 +9,12 @@ export default {
     fr: "/competences"
   },
 
-  contact: {
+  "contact/index": {
     en: "/contact",
     fr: "/contact"
+  },
+  "contact/success": {
+    en: "/contact/success",
+    fr: "/contact/succes"
   }
 };

@@ -1,19 +1,19 @@
 <template>
   <div class="wrapper">
-    <h1 class="name">SKILLS</h1>
+    <!-- <h1 class="name">SKILLS</h1> -->
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
 export default {
-  computed: {
-    ...mapState({
-      img: state => state.profile.profilePicture.src,
-      name: state => state.profile.name,
-      surename: state => state.profile.surename,
-      jobPosition: state => state.profile.jobPosition
-    })
-  }
+  // computed: {
+  //   ...mapState({
+  //     img: state => state.profile.profilePicture.src,
+  //     name: state => state.profile.name,
+  //     surename: state => state.profile.surename,
+  //     jobPosition: state => state.profile.jobPosition
+  //   })
+  // }
 };
 </script>
 

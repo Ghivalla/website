@@ -5,7 +5,7 @@
       <img src="../assets/images/ghivalla.svg" alt="drawing of Ghivalla" />
     </div>
     <div class="content">
-      <div v-html="convertMarkdownToHTML(article.body)" />
+      <div v-html="convertMarkdownToHTML(article.fullDescription)" />
       <SocialMedia />
     </div>
   </div>
@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     article() {
-      return this.aboutPage.articles[0];
+      return this.aboutPage.sections.find(section => section.tag === "AboutMe");
     }
   },
   async asyncData(ctx) {

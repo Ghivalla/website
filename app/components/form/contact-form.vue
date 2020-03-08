@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="sendForm" class="form">
+  <form @submit.prevent="formHandler" class="form">
     <div class="fields">
       <TextField
         :title="content.nameLabel"
@@ -57,9 +57,12 @@ export default {
   },
   components: { TextField },
   methods: {
-    sendForm() {
+    formHandler() {
       this.checkAll();
       if (this.hasErrors) return;
+      this.sendForm();
+    },
+    sendForm() {
       fetch("https://www.ghivalla.com/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -70,12 +73,12 @@ export default {
         })
       }).then(response => {
         if (response.status === 200) {
-          console.log("mail sent");
-          this.email = "";
-          this.name = "";
-          this.message = "";
+          this.$router.push({
+            path: this.content.redirectPage,
+            params: { email: this.email }
+          });
         } else {
-          console.log("oops");
+          console.log("oops something wen wrong with the api");
         }
       });
     },
@@ -126,6 +129,7 @@ input[type="submit"]
   max-width: 250px
   margin-left: auto
   text-align: center
+  color: $white
 
   @media screen and (max-width: 600px)
     max-width: none

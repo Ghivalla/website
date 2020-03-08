@@ -2,7 +2,10 @@
   <div class="wrapper">
     <div class="left">
       <h1 class="h1">{{ article.title }}</h1>
-      <div class="subtitle" v-html="convertMarkdownToHTML(article.body)" />
+      <div
+        class="subtitle"
+        v-html="convertMarkdownToHTML(article.fullDescription)"
+      />
     </div>
     <div class="right">
       <ContactForm :content="contactForm" />
@@ -21,7 +24,9 @@ export default {
   },
   computed: {
     article() {
-      return this.contactPage.articles[0];
+      return this.contactPage.sections.find(
+        section => section.tag === "contactForm"
+      );
     }
   },
   async asyncData(ctx) {
@@ -36,10 +41,7 @@ export default {
     return { contactPage, contactForm };
   },
   components: { ContactForm },
-  mixins: [markdownMixin],
-  mounted() {
-    console.log(this.contactForm);
-  }
+  mixins: [markdownMixin]
 };
 </script>
 
@@ -48,7 +50,7 @@ export default {
   display: flex
   justify-content: space-between
   align-items: flex-start
-  background-image: url('../assets/images/paperplane.svg')
+  background-image: url('../../assets/images/paperplane.svg')
   background-repeat: no-repeat
   background-size: contain
   background-position: center

@@ -6,7 +6,8 @@ export default function(entry) {
     messageLabel,
     buttonLabel,
     errorMessageFormat,
-    errorMessageEmpty
+    errorMessageEmpty,
+    redirectPage
   } = entry.fields;
   return {
     id,
@@ -15,6 +16,7 @@ export default function(entry) {
     messageLabel,
     buttonLabel,
     errorMessageFormat,
-    errorMessageEmpty
+    errorMessageEmpty,
+    redirectPage
   };
 }
