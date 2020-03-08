@@ -4,13 +4,16 @@
       <LangSwitcher />
       <ul>
         <li
-          class="link"
           v-for="link in navbar"
           :key="link.title"
           @click="changePage(link.title)"
           :class="{ selected: link.title.toLowerCase() === currentPage }"
         >
-          <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
+          <span class="link">
+            <nuxt-link :to="link.href">{{
+              link.title.toUpperCase()
+            }}</nuxt-link>
+          </span>
         </li>
       </ul>
     </div>
@@ -97,32 +100,34 @@ export default {
   flex-direction: row-reverse
   justify-content: space-between
 
+  li
+    margin-bottom: 10px
+    overflow: hidden
+    padding: 6px
   .link
-    padding-bottom: 16px
     font-size: 20px
     width: 200px
-    overflow: hidden
-
-  .link a
-    color: $grey
-    transition: all 0.3s linear
     position: relative
+    transition: all 0.3s linear
+    a
+      color: $grey
     &::before
       content: ''
       width: 40px;
       height: 2px
       position: absolute
-      bottom: 0
+      bottom: 5px
       left: -40px
       opacity: 1
       display: block
       background-color: black
       transform: translate(-20%, 100%);
-      transition: left 0.3s linear
-  .link a:hover, .selected a
+      transition: all 0.3s linear
+  .selected .link, .link:hover
     padding-left: 45px
-    letter-spacing: 2px
-    color: $black
+    a
+      letter-spacing: 2px
+      color: $black
     &::before
      opacity: 1
      left: 0
