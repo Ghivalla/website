@@ -10,6 +10,7 @@
   -moz-osx-font-smoothing: grayscale
   -webkit-tap-highlight-color: transparent
   box-sizing: border-box
+  cursor: none !important
 
 
 body
@@ -17,13 +18,39 @@ body
   background-color: $light-grey
   color: $black
   font-family: 'Roboto', sans-serif
+  
+
 
 *:focus
   outline: 4px solid $black
 
 body.using-mouse *:focus 
   outline: none
-  
+
+
+
+.cursor-dot, .cursor-dot-outline 
+  pointer-events: none
+  position: absolute
+  top: 50%
+  left: 50%
+  border-radius: 50%
+  opacity: 0
+  transform: translate(-50%, -50%)
+  transition: opacity 0.3s ease-in-out
+  transition: transform 0.3s ease-in-out
+
+.cursor-dot
+  $size: 8px
+  width: $size
+  height: $size
+  background-color: $black
+
+.cursor-dot-outline
+  $size: 40px
+  width: $size
+  height: $size
+  background-color: rgba($black, 0.5)
 
 button
   appearance: none
@@ -64,9 +91,6 @@ button
 
     &:hover
       box-shadow: 0 0 1px 0 rgba(#18332F, 0.24), 0 24px 24px 0 rgba(#18332F, 0.03), 0 2px 2px 0 rgba(#18332F, 0.03), 0 4px 4px 0 rgba(#18332F, 0.03), 0 8px 8px 0 rgba(#18332F, 0.03), 0 16px 16px 0 rgba(#18332F, 0.03)
-
-
-
 
 @media screen and (max-width: 800px)
   .wrapper
