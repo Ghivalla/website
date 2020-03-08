@@ -48,10 +48,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    { src: "~/plugins/cursor.js", ssr: false },
-    { src: "~/plugins/a11y-keyboard-border.js", ssr: false }
-  ],
+  plugins: [{ src: "~/plugins/a11y-keyboard-border.js", ssr: false }],
   /*
    ** Nuxt.js dev-modules
    */

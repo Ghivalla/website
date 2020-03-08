@@ -10,7 +10,6 @@
   -moz-osx-font-smoothing: grayscale
   -webkit-tap-highlight-color: transparent
   box-sizing: border-box
-  cursor: none !important
 
 
 body
@@ -81,6 +80,10 @@ button
     transition: background 0s
   &:focus
     outline-offset: 1px;
+
+a
+  &:focus
+    outline-offset: 2px
 
 .wrapper
   padding: 96px 24px

@@ -1,13 +1,14 @@
 <template>
-  <div
-    class="dropdown"
-    :class="{ 'opened' : active }"
-    @click="active=!active"
-    @keyup.enter="active=!active"
-    @keyup.escape="active=false"
-  >
-    <div class="dropdown-trigger" role="button" tabindex="0" :aria-pressed="active">
-      <span class="dropdown-trigger-content" tabindex="-1">
+  <div class="dropdown" :class="{ opened: active }" @click="active = !active">
+    <div
+      class="dropdown-trigger"
+      role="button"
+      tabindex="0"
+      :aria-pressed="active"
+      @keyup.enter="active = !active"
+      @keyup.escape="active = false"
+    >
+      <span class="dropdown-trigger-content">
         <img class="lazyload country-image" :src="currentLocale.src" />
         <div>{{ currentLocale.alt.toUpperCase() }}</div>
       </span>
@@ -19,11 +20,12 @@
           :key="lang.alt"
           @click="switchLang(lang.alt)"
           @keyup.enter="switchLang(lang.alt)"
+          @keyup.escape="active = false"
           class="lang-item"
           tabindex="0"
         >
           <img class="lazyload country-image" :src="lang.src" />
-          {{lang.desc}}
+          {{ lang.desc }}
         </li>
       </ul>
     </div>
@@ -79,7 +81,7 @@ export default {
     margin-top: 18px
     opacity: 0
     position: absolute
-    top: 45%
+    top: 30%
     right: 0
     visibility: hidden
     width: 150px
@@ -99,6 +101,8 @@ export default {
       margin-right: 8px
 
   .dropdown-trigger
+    &:focus
+      outline-offset: 2px
     &-content
       display: flex
       align-items: center

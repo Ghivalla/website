@@ -25,8 +25,6 @@ export default {
   display: flex
   justify-content: space-between
   max-width: 200px
-  a
-    padding: 5px
 
 @media screen and (max-width: 1800px)
   .social-media

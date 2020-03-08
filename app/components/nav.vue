@@ -111,6 +111,7 @@ export default {
     transition: all 0.3s linear
     a
       color: $grey
+
     &::before
       content: ''
       width: 40px;
@@ -195,19 +196,24 @@ export default {
     background-color: $white
     ul
       display: flex
-      .link
-        padding-bottom: 0px
-        width: auto
-        margin-right: 32px
+      li
+        margin-bottom: 0
         display: flex
         align-items: center
-        a::before
+      .link
+        padding-bottom: 0px
+        width: 150px
+        transition: none
+        &::before
           display: none
+
       .selected a
         padding-left: 0
-      .link a:hover, .selected a
+      .selected .link, .link:hover
         padding-left: 0px
-        letter-spacing: normal
+        a
+          letter-spacing: normal
+
 
 @media screen and (max-width: 800px)
   .navigation.desktop
