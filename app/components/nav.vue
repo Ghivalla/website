@@ -4,7 +4,7 @@
       <LangSwitcher />
       <ul>
         <li
-          class="link h3"
+          class="link"
           v-for="link in navbar"
           :key="link.title"
           @click="changePage(link.title)"
@@ -98,13 +98,35 @@ export default {
   justify-content: space-between
 
   .link
-    padding-left: 16px
+    padding-bottom: 16px
+    font-size: 20px
+    width: 200px
+    overflow: hidden
 
   .link a
     color: $grey
-
-  .selected a, .link a:hover
+    transition: all 0.3s linear
+    position: relative
+    &::before
+      content: ''
+      width: 40px;
+      height: 2px
+      position: absolute
+      bottom: 0
+      left: -40px
+      opacity: 1
+      display: block
+      background-color: black
+      transform: translate(-20%, 100%);
+      transition: left 0.3s linear
+  .link a:hover, .selected a
+    padding-left: 45px
+    letter-spacing: 2px
     color: $black
+    &::before
+     opacity: 1
+     left: 0
+
 
 .navigation.mobile
   background-color: $white
@@ -168,9 +190,19 @@ export default {
     background-color: $white
     ul
       display: flex
-
-    .link
-      font-size: 16px
+      .link
+        padding-bottom: 0px
+        width: auto
+        margin-right: 32px
+        display: flex
+        align-items: center
+        a::before
+          display: none
+      .selected a
+        padding-left: 0
+      .link a:hover, .selected a
+        padding-left: 0px
+        letter-spacing: normal
 
 @media screen and (max-width: 800px)
   .navigation.desktop
