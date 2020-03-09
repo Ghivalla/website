@@ -16,6 +16,12 @@
 </template>
 <script>
 export default {
+  validate({ app, store, redirect }) {
+    if (!store.state.mailSent) {
+      redirect(app.localePath({ name: "contact" }));
+    }
+    return true;
+  },
   async asyncData(ctx) {
     const thankYouPage = await ctx.store.dispatch("getEntries", {
       content_type: "page",
@@ -32,6 +38,9 @@ export default {
     formLink() {
       return this.thankYouPage.sections.find(section => section.tag === "link");
     }
+  },
+  beforeDestroy() {
+    this.$store.commit("setMailSent", false);
   }
 };
 </script>

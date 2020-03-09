@@ -60,6 +60,7 @@ export default {
     formHandler() {
       this.checkAll();
       if (this.hasErrors) return;
+      this.$store.commit("setMailSent", true);
       this.sendForm();
     },
     sendForm() {

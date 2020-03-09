@@ -4,7 +4,8 @@ export const state = () => ({
   env: {
     hostname: null
   },
-  currentPage: null
+  currentPage: null,
+  mailSent: false
 });
 
 export const mutations = {
@@ -18,6 +19,10 @@ export const mutations = {
 
   setCurrentPage: (state, page) => {
     state.currentPage = page;
+  },
+
+  setMailSent: (state, status) => {
+    state.mailSent = status;
   },
 
   setEnv: (state, env) => (state.env = env)
