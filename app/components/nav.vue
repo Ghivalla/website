@@ -131,6 +131,9 @@ export default {
       background-color: black
       transform: translate(-20%, 100%);
       transition: all 0.3s linear
+
+    &::selection
+      background-color: none
   .selected .link, .link:hover
     padding-left: 45px
     a

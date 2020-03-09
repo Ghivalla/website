@@ -64,6 +64,9 @@ export default {
       margin-bottom: 16px
       &:last-child
         margin-bottom: 64px
+      a
+        color: $black
+        text-decoration: underline
 @media screen and (max-width: 1800px)
   .wrapper
     column-gap: 150px
