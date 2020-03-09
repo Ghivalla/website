@@ -53,7 +53,7 @@ export default {
   background-image: url('../../assets/images/paperplane.svg')
   background-repeat: no-repeat
   background-size: contain
-  background-position: center
+  background-position: center bottom
   margin-top: 60px
   .right
     width: calc(100%/2.3)

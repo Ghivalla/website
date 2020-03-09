@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <span v-if="icon" class="icon" :style="{ 'background' : bg, '--icon': `url(${icon.src})` }"></span>
+  <div :aria-label="icon.description">
+    <span
+      v-if="icon"
+      class="icon"
+      :style="{ background: bg, '--icon': `url(${icon.src})` }"
+    ></span>
   </div>
 </template>
 <script>

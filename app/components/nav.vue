@@ -66,7 +66,6 @@ export default {
   },
   methods: {
     changePage(link) {
-      console.log(link);
       this.toggleMobileMenu();
       this.$store.commit("setCurrentPage", link.title.toLowerCase());
       this.$router.push({
@@ -223,6 +222,7 @@ export default {
         padding-left: 0px
         a
           letter-spacing: normal
+          color: $black
 
 
 @media screen and (max-width: 800px)
@@ -230,6 +230,7 @@ export default {
     display: none
   .navigation.mobile
     display: block
-    .link
-      font-size: 26px
+    .selected.link, .link:hover
+      a
+        color: $black
 </style>
