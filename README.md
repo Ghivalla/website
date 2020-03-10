@@ -5,6 +5,8 @@
 ## Build Setup
 
 ``` bash
+#go inside one of the folders
+
 # install dependencies
 $ yarn install
 
