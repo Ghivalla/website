@@ -5,7 +5,8 @@
 ## Build Setup
 
 ``` bash
-#go inside one of the folders
+#g o inside one of the folders
+$ cd folderName (app or server)
 
 # install dependencies
 $ yarn install
