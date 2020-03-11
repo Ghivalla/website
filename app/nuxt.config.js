@@ -56,7 +56,7 @@ export default {
     [
       "@nuxtjs/google-analytics",
       {
-        id: "UA-160171357-1"
+        id: process.env.GA_ID
       }
     ]
   ],
