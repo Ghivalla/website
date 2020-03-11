@@ -1,10 +1,13 @@
 # portfolio
 
-> my personal website
+> my personal website, theres no projects shown yet, but it's for soon !
 
 ## Build Setup
 
 ``` bash
+#g o inside one of the folders
+$ cd folderName (app or server)
+
 # install dependencies
 $ yarn install
 
