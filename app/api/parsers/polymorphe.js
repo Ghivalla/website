@@ -1,7 +1,7 @@
 import parseImage from "./image";
 import parseLink from "./link";
 
-export default function(entry) {
+function polymorpheParser(entry) {
   const {
     title,
     description,
@@ -12,6 +12,9 @@ export default function(entry) {
   const image = parseImage(entry.fields.image);
   const link = parseLink(entry.fields.link);
   const links = entry.fields.links ? entry.fields.links.map(parseLink) : null;
+  const polymorphe = entry.fields.polymorphe
+    ? entry.fields.polymorphe.map(polymorpheParser)
+    : null;
   return {
     title,
     description,
@@ -20,6 +23,8 @@ export default function(entry) {
     componentName,
     link,
     links,
-    image
+    image,
+    polymorphe
   };
 }
+export default polymorpheParser;

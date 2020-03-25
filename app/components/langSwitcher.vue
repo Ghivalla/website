@@ -3,13 +3,16 @@
     <div
       class="dropdown-trigger"
       role="button"
+      :aria-label="nav.langswitchLabel"
       tabindex="0"
       :aria-pressed="active"
+      :aria-expanded="active"
+      :aria-haspopup="active"
       @keyup.enter="active = !active"
       @keyup.escape="active = false"
     >
       <span class="dropdown-trigger-content">
-        <img class="lazyload country-image" :src="currentLocale.src" />
+        <img class="lazyload country-image" :src="currentLocale.src" alt />
         <div>{{ currentLocale.alt.toUpperCase() }}</div>
       </span>
     </div>
@@ -24,7 +27,7 @@
           class="lang-item"
           tabindex="0"
         >
-          <img class="lazyload country-image" :src="lang.src" />
+          <img class="lazyload country-image" :src="lang.src" alt />
           {{ lang.desc }}
         </li>
       </ul>

@@ -1,52 +1,59 @@
 <template>
-  <nav>
+  <div>
     <div class="navigation desktop">
       <LangSwitcher />
-      <ul>
-        <li
-          v-for="link in navbar"
-          :key="link.title"
-          @click="changePage(link)"
-          :class="{ selected: link.title.toLowerCase() === currentPage }"
-        >
-          <span class="link">
-            <nuxt-link :to="link.href">{{
-              link.title.toUpperCase()
-            }}</nuxt-link>
-          </span>
-        </li>
-      </ul>
+      <nav>
+        <ul role="menu">
+          <li
+            role="menuitem"
+            v-for="link in navbar"
+            :key="link.title"
+            @click="changePage(link)"
+            :class="{ selected: link.title.toLowerCase() === currentPage }"
+          >
+            <span class="link">
+              <nuxt-link :to="link.href">
+                {{
+                link.title.toUpperCase()
+                }}
+              </nuxt-link>
+            </span>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <div class="navigation mobile">
-      <div class="topbar">
-        <LangSwitcher />
-        <div
-          class="menu-button"
-          @click="toggleMobileMenu"
-          role="button"
-          tabindex="1"
-          :aria-pressed="showMobileMenu"
-        >
-          MENU
-          <div class="icon" :class="{ opened: showMobileMenu }">
-            <div class="line line1" />
-            <div class="line line2" />
+    <nav>
+      <div class="navigation mobile">
+        <div class="topbar">
+          <LangSwitcher />
+          <div
+            class="menu-button"
+            @click="toggleMobileMenu"
+            role="button"
+            tabindex="1"
+            :aria-pressed="showMobileMenu"
+          >
+            MENU
+            <div class="icon" :class="{ opened: showMobileMenu }">
+              <div class="line line1" />
+              <div class="line line2" />
+            </div>
           </div>
         </div>
+        <ul v-if="showMobileMenu" class="menu-list">
+          <li
+            class="link h3"
+            :class="{ selected: link.title.toLowerCase() === currentPage }"
+            v-for="link in navbar"
+            :key="link.title"
+            @click="changePage(link)"
+          >
+            <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
+          </li>
+        </ul>
       </div>
-      <ul v-if="showMobileMenu" class="menu-list">
-        <li
-          class="link h3"
-          :class="{ selected: link.title.toLowerCase() === currentPage }"
-          v-for="link in navbar"
-          :key="link.title"
-          @click="changePage(link)"
-        >
-          <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </template>
 <script>
 import { mapState } from "vuex";
@@ -120,7 +127,7 @@ export default {
 
     &::before
       content: ''
-      width: 40px;
+      width: 40px
       height: 2px
       position: absolute
       bottom: 5px
@@ -128,7 +135,7 @@ export default {
       opacity: 1
       display: block
       background-color: black
-      transform: translate(-20%, 100%);
+      transform: translate(-20%, 100%)
       transition: all 0.3s linear
 
     &::selection
@@ -139,9 +146,8 @@ export default {
       letter-spacing: 2px
       color: $black
     &::before
-     opacity: 1
-     left: 0
-
+      opacity: 1
+      left: 0
 
 .navigation.mobile
   background-color: $white
@@ -223,7 +229,6 @@ export default {
         a
           letter-spacing: normal
           color: $black
-
 
 @media screen and (max-width: 800px)
   .navigation.desktop
