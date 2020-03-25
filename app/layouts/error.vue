@@ -42,8 +42,10 @@ export default {
       color: rgb(219,225,236)
       .h1
         font-size: 80px
-        p
-          margin-bottom: 32px
+        margin-bottom: 32px
+        margin-top: 0
+    p
+      margin-bottom: 32px
 
 @media screen and (max-width: 500px)
   .wrapper
