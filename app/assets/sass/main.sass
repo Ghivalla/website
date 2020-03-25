@@ -90,6 +90,10 @@ a
   margin: 0 auto
   max-width: $max-width
 
+.full-page
+  min-height: calc( 100vh - 229px )
+  margin-top: 60px
+
 .u-shadow
   box-shadow: 0 0 1px 0 rgba(#18332F, 0.24), 0 24px 24px 0 rgba(#18332F, 0.03), 0 2px 2px 0 rgba(#18332F, 0.03), 0 4px 4px 0 rgba(#18332F, 0.03), 0 8px 8px 0 rgba(#18332F, 0.03), 0 16px 16px 0 rgba(#18332F, 0.03)
 
@@ -110,3 +114,7 @@ a
 @media screen and (max-width: 800px)
   .wrapper
     padding: 48px 24px
+    .h1
+      margin-top: 48px
+  .full-page
+    min-height: calc( 100vh - 183px )

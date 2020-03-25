@@ -29,7 +29,7 @@ export default {
 <style lang="sass" scoped>
 .wrapper
   text-align: center
-  margin-bottom: 128px
+  margin-bottom: 96px
 
 .grid
   display: grid
@@ -44,6 +44,7 @@ export default {
 
 img
   margin-bottom: 16px
+  height: 50px
   width: 50px
 
 .h3

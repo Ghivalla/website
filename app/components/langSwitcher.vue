@@ -84,7 +84,7 @@ export default {
     margin-top: 18px
     opacity: 0
     position: absolute
-    top: 30%
+    top: 40px
     right: 0
     visibility: hidden
     width: 150px

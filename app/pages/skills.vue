@@ -1,16 +1,17 @@
 <template>
-  <section class="wrapper">
+  <section class="wrapper full-page">
     <h1 class="h1">{{ skillsPage.title }}</h1>
     <triCardsSimple :title="skillsPage.title" :cards="triCardData" />
     <h2 class="h2">{{skillsPage.description}}</h2>
     <AlternateTimp
-      v-for="(section, index) in skillsSections"
+      v-for="(section, index) in skillsData"
       :key="`${section.title.trim().replace(/\s/g, '')}-${index}`"
       :title="section.title"
       :paragraph="section.fullDescription"
       :image="section.image"
       :reverse="!(index % 2 === 0)"
     />
+    <cta :title="ctaData.title" :paragraph="ctaData.description" :link="ctaData.link" />
   </section>
 </template>
 <script>
@@ -19,6 +20,7 @@ import markdownMixin from "@/mixins/markdown";
 import buildHead from "@/utils/seo";
 import AlternateTimp from "@/components/cards/alternate-timp";
 import triCardsSimple from "@/components/cards/tri-cards-simple";
+import cta from "@/components/cta";
 
 export default {
   head() {
@@ -36,7 +38,7 @@ export default {
   },
 
   computed: {
-    skillsSections: function() {
+    skillsData: function() {
       return this.skillsPage.sections.filter(
         section => section.componentName === "alternate-timp"
       );
@@ -45,16 +47,26 @@ export default {
       return this.skillsPage.sections.filter(
         section => section.componentName === "tri-card-simple"
       )[0].polymorphe;
+    },
+    ctaData: function() {
+      return this.skillsPage.sections.filter(
+        section => section.componentName === "cta"
+      )[0];
     }
   },
 
-  components: { AlternateTimp, triCardsSimple }
+  components: { AlternateTimp, triCardsSimple, cta }
 };
 </script>
 
 <style lang="sass" scoped>
 .wrapper
-  margin-top: 60px
   .h2, .h1
     text-align: center
+@media screen and (max-width: 800px)
+  .wrapper
+    .h1
+      margin-bottom: 48px
+    .h2
+      margin-bottom: 48px
 </style>

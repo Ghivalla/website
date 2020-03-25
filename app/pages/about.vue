@@ -1,18 +1,16 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper full-page">
     <h1 class="title h1">{{ article.title }}</h1>
     <div class="picture">
       <img src="../assets/images/ghivalla.svg" alt="drawing of Ghivalla" />
     </div>
     <div class="content">
       <div v-html="convertMarkdownToHTML(article.fullDescription)" />
-      <SocialMedia />
     </div>
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
-import SocialMedia from "@/components/social-media-list";
 import markdownMixin from "@/mixins/markdown";
 import buildHead from "@/utils/seo";
 
@@ -32,7 +30,6 @@ export default {
     });
     return { aboutPage };
   },
-  components: { SocialMedia },
   mixins: [markdownMixin]
 };
 </script>
@@ -45,12 +42,12 @@ export default {
   grid-template-columns: 500px 1fr
   gap: 25px
   column-gap: 100px
-  margin-top: 60px
 
   .picture
     max-width: 300px
     width: 100%
     grid-area: p
+
   .h1
     margin-bottom: 32px
     grid-area: t

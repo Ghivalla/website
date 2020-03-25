@@ -1,29 +1,16 @@
 <template>
   <section>
     <footer>
-      <div class="items name">
-        <span>{{ name + " " + surename }}</span
-        ><br />
-        <span>{{ jobPosition }}</span>
-      </div>
-      <div class="items">
-        <SvgIcon bg="white" :icon="localisation" />
-        <div>
-          <span>{{ localisation.alt }}</span>
-        </div>
-      </div>
-      <div class="items">
-        <SvgIcon bg="white" :icon="mail" />
-        <span>{{ mail.alt }}</span>
-      </div>
-      <div class="items social-media">
+      <div class="social-media">
         <SocialMediaList />
+      </div>
+      <div class="copy">
+        <p>&copy; 2019 - {{ name }}</p>
       </div>
     </footer>
   </section>
 </template>
 <script>
-import SvgIcon from "@/components/svg-icon";
 import SocialMediaList from "@/components/social-media-list";
 import { mapState } from "vuex";
 export default {
@@ -31,12 +18,10 @@ export default {
     ...mapState({
       mail: state => state.profile.mail,
       localisation: state => state.profile.localisation,
-      name: state => state.profile.name,
-      surename: state => state.profile.surename,
-      jobPosition: state => state.profile.jobPosition
+      name: state => state.profile.name
     })
   },
-  components: { SvgIcon, SocialMediaList }
+  components: { SocialMediaList }
 };
 </script>
 <style lang="sass" scoped>
@@ -47,46 +32,37 @@ section
   bottom: 0
   left: 0
   footer
-    max-width: 700px
-    width: 100%
-    display: grid
-    grid-template-columns: repeat(3,1fr)
-    padding: 20px 0
+    display: flex
+    flex-direction: row-reverse
+    justify-content: space-between
+    padding: 40px
     margin: 0 auto
-
-    .items:not(:first-child)
-      padding-left: 20px
+    .copy
       display: flex
-      align-items: center
-    .items:not(:last-child)
-      border-right: 1px solid $sep
+      align-items: flex-end
+      p
+        font-size: 12px
 
-    .social-media
-      display: none
+@media screen and (max-width: 1800px)
+  section
+    width: 100%
+    margin: 0 auto
+    position: static
+    border-top: 1px solid $sep
+    footer
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      padding: 40px
+      margin: 0 auto
+      .copy
+        display: flex
+        align-items: flex-end
+        p
+          font-size: 14px
+          color: $grey
 
 @media screen and (max-width: 800px)
-  section
-    border-top: 1px solid $sep
-    position: static
-    background-color: rgb(0,0,100)
-    footer
-      grid-template-columns: 1fr
-      padding: 40px 0
-
-      .items
-        justify-content: center
-        text-align: center
-
-      .items:not(:last-child)
-        border-right: none
-        padding-bottom: 20px
-
-      .items:not(:first-child)
-        padding-top: 20px
-
-      .name
-        display: none
-
-      .social-media
-        display: flex
+  section footer
+    padding: 25px
 </style>

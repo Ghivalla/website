@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper full-page">
     <CanvasWave />
     <div class="cta">
       <h1 class="name h1">{{ name }}</h1>
@@ -43,7 +43,6 @@ export default {
   align-items: center
   display: flex
   width: 100vw
-  min-height: 100vh
 
   .cta
     display: flex

@@ -1,11 +1,8 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper full-page">
     <div class="left">
       <h1 class="h1">{{ article.title }}</h1>
-      <div
-        class="subtitle"
-        v-html="convertMarkdownToHTML(article.fullDescription)"
-      />
+      <div class="subtitle" v-html="convertMarkdownToHTML(article.fullDescription)" />
     </div>
     <div class="right">
       <ContactForm :content="contactForm" />
@@ -54,7 +51,6 @@ export default {
   background-repeat: no-repeat
   background-size: contain
   background-position: center bottom
-  margin-top: 60px
   .right
     width: calc(100%/2.3)
   .left
@@ -79,7 +75,6 @@ export default {
     flex-wrap: wrap
     justify-content: center
     align-items: center
-    padding: 140px 0 64px 0
     background-position: center
 
     .left, .right
@@ -88,7 +83,4 @@ export default {
 @media screen and (max-width: 600px)
   h2
     margin-top: 10px
-
-  .wrapper
-    padding-top: 100px
 </style>

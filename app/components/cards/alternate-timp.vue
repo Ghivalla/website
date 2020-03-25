@@ -35,20 +35,23 @@ export default {
 .wrapper
   display: grid
   grid-template-columns: 1fr 1fr
+  grid-template-areas: "i c"
   padding-left: 50px
   padding-right: 50px
   img
     width: 100%
     max-width: 500px
+    grid-area: i
   .content
     margin-left: 32px
     display: flex
     flex-direction: column
     justify-content: center
+    grid-area: c
     .h3
       margin-bottom: 32px
 .wrapper.reverse
-  direction: rtl
+  grid-template-areas: "c i"
   .content
     margin-left: 0
     margin-right: 32px
@@ -62,17 +65,13 @@ export default {
     padding-right: 25px
     img
       margin: 0 auto 32px
-      .content
-        margin-left: 0
-        .h3, p
-          text-align: center
-        .h3
-          margin-bottom: 32px
+    .content
+      margin-left: 0
+      .h3
+        margin-bottom: 32px
 
-    .wrapper.reverse .content
-      margin-right: 0px
-      .h3, p
-        text-align: center
+  .wrapper.reverse .content
+    margin-right: 0px
 @media screen and (max-width: 600px)
   .wrapper
     padding-left: 0px
@@ -81,6 +80,6 @@ export default {
     .content
       p
         text-align: left
-    .wrapper.reverse .content p
-      text-align: left
+  .wrapper.reverse .content p
+    text-align: left
 </style>

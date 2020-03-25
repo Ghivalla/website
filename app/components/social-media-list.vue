@@ -2,7 +2,7 @@
   <ul class="social-media">
     <li class="icon" v-for="media in socialMedia" :key="media.title">
       <a :href="media.link.href" target="_blank" :aria-label="media.link.title">
-        <SvgIcon bg="black" :icon="media.image" />
+        <SvgIcon bg="#37474f" :icon="media.image" />
       </a>
     </li>
   </ul>
@@ -22,12 +22,21 @@ export default {
 </script>
 <style lang="sass" scoped>
 .social-media
+  position: static
   display: flex
-  justify-content: space-between
-  max-width: 200px
+  flex-direction: column
+
+  .icon:not(:last-child)
+    margin-bottom: 16px
 
 @media screen and (max-width: 1800px)
   .social-media
-    position: static
-    display: flex
+    flex-direction: row
+    margin-bottom: 32px
+    .icon:not(:last-child)
+      margin-right: 32px
+      margin-bottom: 0px
+@media screen and (max-width: 800px)
+  .social-media
+    margin-bottom: 16px
 </style>

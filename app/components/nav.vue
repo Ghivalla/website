@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="navigation desktop">
+    <div class="navigation desktop" v-if="displayDesktopNav">
       <LangSwitcher />
       <nav>
         <ul role="menu">
@@ -22,7 +22,7 @@
         </ul>
       </nav>
     </div>
-    <nav>
+    <nav v-else>
       <div class="navigation mobile">
         <div class="topbar">
           <LangSwitcher />
@@ -62,14 +62,18 @@ export default {
   data() {
     return {
       showMobileMenu: false,
-      openedDropdown: null
+      openedDropdown: null,
+      screenWidth: null
     };
   },
   computed: {
     ...mapState({
       navbar: state => state.navbar.navigation,
       currentPage: state => state.currentPage
-    })
+    }),
+    displayDesktopNav() {
+      return this.screenWidth > 800;
+    }
   },
   methods: {
     changePage(link) {
@@ -90,25 +94,33 @@ export default {
       this.hideDropdowns();
       this.showMobileMenu = !this.showMobileMenu;
     },
-    toggleSubmenu(name) {
-      this.openedDropdown = this.openedDropdown !== name ? name : null;
+    onScreenResize(e) {
+      this.screenWidth = e.target.visualViewport.width;
     }
   },
-  components: { LangSwitcher }
+  components: { LangSwitcher },
+  mounted() {
+    this.screenWidth = window.innerWidth;
+    window.addEventListener("resize", this.onScreenResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onScreenResize);
+  }
 };
 </script>
 <style lang="sass" scoped>
-.hidden
-  display: none
 .navigation
   position: fixed
   top: 0px
   left: 0px
   padding: 40px
   width: 100%
+
+.desktop
   display: flex
   flex-direction: row-reverse
   justify-content: space-between
+  height: 80px
 
   li
     margin-bottom: 10px
@@ -117,7 +129,6 @@ export default {
     &:hover
       cursor: pointer
   .link
-    font-size: 20px
     width: 200px
     position: relative
     transition: all 0.3s linear
@@ -127,7 +138,7 @@ export default {
 
     &::before
       content: ''
-      width: 40px
+      width: 35px
       height: 2px
       position: absolute
       bottom: 5px
@@ -135,8 +146,8 @@ export default {
       opacity: 1
       display: block
       background-color: black
-      transform: translate(-20%, 100%)
-      transition: all 0.3s linear
+      transform: translate(-40%, 100%)
+      transition: all 0.3s ease-in
 
     &::selection
       background-color: none
@@ -147,19 +158,17 @@ export default {
       color: $black
     &::before
       opacity: 1
-      left: 0
-
-.navigation.mobile
+      left: 15px
+.mobile
   background-color: $white
-  display: none
   padding: 0
   .topbar
     display: flex
     justify-content: space-between
     padding: 25px
     border-bottom: 1px solid $sep
+    width: 100%
     .menu-button
-      font-size: 14px
       letter-spacing: 1px
       font-weight: 600
       display: flex
@@ -183,7 +192,7 @@ export default {
       width: 14px
       height: 2px
       background: $black
-      transition: transform 0.20s ease-out
+      transition: transform 0.3s linear
 
     .line2
       margin-top: 5px
@@ -204,21 +213,33 @@ export default {
       &:first-child
         margin-top: 40px
 
+    .selected.link, .link:hover
+      a
+        color: $black
+
 @media screen and (max-width: 1800px)
-  .navigation
+  .navigation.desktop
     padding: 25px
     border-bottom: 1px solid $sep
     background-color: $white
+    height: auto
+
     ul
       display: flex
+      align-content: center
+      justify-content: flex-start
+      align-items: center
+      height: 100%
+
       li
         margin-bottom: 0
         display: flex
-        align-items: center
+
       .link
+        width: auto
         padding-bottom: 0px
-        width: 150px
         transition: none
+        margin-right: 32px
         &::before
           display: none
 
@@ -229,13 +250,4 @@ export default {
         a
           letter-spacing: normal
           color: $black
-
-@media screen and (max-width: 800px)
-  .navigation.desktop
-    display: none
-  .navigation.mobile
-    display: block
-    .selected.link, .link:hover
-      a
-        color: $black
 </style>
