@@ -33,8 +33,10 @@ export default {
 
   .h1
     margin-bottom: 16px
+    text-align: center
   p
     margin-bottom: 20px
+    text-align: center
 
   .button
     height: 50px
@@ -45,6 +47,6 @@ export default {
 
 @media screen and (max-width:800px)
   .wrapper
-    margin-top: 64px
-    padding-bottom: 64px
+    margin-top: 32px
+    margin-bottom: 32px
 </style>

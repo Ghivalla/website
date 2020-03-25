@@ -61,6 +61,7 @@ export default {
 @media screen and (max-width: 1000px)
   .wrapper
     grid-template-columns: 1fr
+    grid-template-areas: "i" "c"
     padding-left: 25px
     padding-right: 25px
     img
@@ -70,8 +71,10 @@ export default {
       .h3
         margin-bottom: 32px
 
-  .wrapper.reverse .content
-    margin-right: 0px
+  .wrapper.reverse
+    grid-template-areas: "i" "c"
+    .content
+      margin-right: 0px
 @media screen and (max-width: 600px)
   .wrapper
     padding-left: 0px
