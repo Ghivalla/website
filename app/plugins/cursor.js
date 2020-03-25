@@ -1,4 +1,4 @@
-export default ({ store }) => {
+export default () => {
   window.onload = function changeCursor() {
     const body = document.getElementsByTagName("body")[0];
     const cursorDot = document.createElement("div");

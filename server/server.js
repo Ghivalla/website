@@ -28,5 +28,5 @@ app.post('/send-email', function (req, res) {
 })
 
 app.listen(3001, function () {
-  console.log('Example app listening on port 3001!')
+  console.log('App listening on port 3001!')
 })
