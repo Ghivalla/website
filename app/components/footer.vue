@@ -39,8 +39,8 @@ section
     margin: 0 auto
     .copy
       display: flex
-      align-items: flex-end
-      transform: rotate(90deg)
+      align-items: flex-start
+      transform: rotate(-90deg)
       p
         font-size: 12px
 
