@@ -40,6 +40,7 @@ section
     .copy
       display: flex
       align-items: flex-end
+      transform: rotate(90deg)
       p
         font-size: 12px
 
@@ -58,6 +59,8 @@ section
       .copy
         display: flex
         align-items: flex-end
+        transform: rotate(0deg)
+
         p
           font-size: 14px
           color: $grey

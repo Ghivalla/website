@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- DESKTOP NAVIGATION -->
     <div class="navigation desktop" v-if="displayDesktopNav">
       <LangSwitcher />
       <nav>
@@ -13,15 +14,14 @@
           >
             <span class="link">
               <nuxt-link :to="link.href">
-                {{
-                link.title.toUpperCase()
-                }}
+                {{ link.title.toUpperCase() }}
               </nuxt-link>
             </span>
           </li>
         </ul>
       </nav>
     </div>
+    <!-- MOBILE NAVIGATION -->
     <nav v-else>
       <div class="navigation mobile">
         <div class="topbar">
@@ -31,16 +31,16 @@
             @click="toggleMobileMenu"
             role="button"
             tabindex="1"
-            :aria-pressed="showMobileMenu"
+            :aria-pressed="dropDownStatus"
           >
             MENU
-            <div class="icon" :class="{ opened: showMobileMenu }">
+            <div class="icon" :class="{ opened: dropDownStatus }">
               <div class="line line1" />
               <div class="line line2" />
             </div>
           </div>
         </div>
-        <ul v-if="showMobileMenu" class="menu-list">
+        <ul v-if="dropDownStatus" class="menu-list">
           <li
             class="link h3"
             :class="{ selected: link.title.toLowerCase() === currentPage }"
@@ -48,7 +48,9 @@
             :key="link.title"
             @click="changePage(link)"
           >
-            <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
+            <nuxt-link :to="link.href">{{
+              link.title.toUpperCase()
+            }}</nuxt-link>
           </li>
         </ul>
       </div>
@@ -61,8 +63,7 @@ import LangSwitcher from "@/components/langSwitcher";
 export default {
   data() {
     return {
-      showMobileMenu: false,
-      openedDropdown: null,
+      dropDownStatus: false,
       screenWidth: null
     };
   },
@@ -83,19 +84,25 @@ export default {
         path: link.href
       });
     },
-    hideDropdowns() {
-      this.openedDropdown = null;
-    },
     hideMobileMenu() {
-      this.hideDropdowns();
-      this.showMobileMenu = false;
+      this.dropDownStatus = false;
     },
     toggleMobileMenu() {
-      this.hideDropdowns();
-      this.showMobileMenu = !this.showMobileMenu;
+      this.dropDownStatus = !this.dropDownStatus;
+      if (this.dropDownStatus) {
+        this.disableScroll();
+      } else {
+        this.enableScroll();
+      }
     },
     onScreenResize(e) {
       this.screenWidth = e.target.visualViewport.width;
+    },
+    disableScroll() {
+      document.body.classList.add("stop-scrolling");
+    },
+    enableScroll() {
+      document.body.classList.remove("stop-scrolling");
     }
   },
   components: { LangSwitcher },
@@ -162,6 +169,7 @@ export default {
 .mobile
   background-color: $white
   padding: 0
+  z-index: 1
   .topbar
     display: flex
     justify-content: space-between
@@ -202,6 +210,8 @@ export default {
     display: flex
     flex-direction: column
     border-bottom: 1px solid $sep
+    overflow-y: scroll
+    max-height: calc( 100vh - 90px )
     .link
       padding: 18px 24px
       font-weight: 500
