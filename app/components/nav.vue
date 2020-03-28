@@ -13,9 +13,7 @@
             :class="{ selected: link.title.toLowerCase() === currentPage }"
           >
             <span class="link">
-              <nuxt-link :to="link.href">
-                {{ link.title.toUpperCase() }}
-              </nuxt-link>
+              <nuxt-link :to="link.href">{{ link.title.toUpperCase() }}</nuxt-link>
             </span>
           </li>
         </ul>
@@ -48,9 +46,11 @@
             :key="link.title"
             @click="changePage(link)"
           >
-            <nuxt-link :to="link.href">{{
+            <nuxt-link :to="link.href">
+              {{
               link.title.toUpperCase()
-            }}</nuxt-link>
+              }}
+            </nuxt-link>
           </li>
         </ul>
       </div>
@@ -89,24 +89,14 @@ export default {
     },
     toggleMobileMenu() {
       this.dropDownStatus = !this.dropDownStatus;
-      if (this.dropDownStatus) {
-        this.disableScroll();
-      } else {
-        this.enableScroll();
-      }
     },
     onScreenResize(e) {
       this.screenWidth = e.target.visualViewport.width;
-    },
-    disableScroll() {
-      document.body.classList.add("stop-scrolling");
-    },
-    enableScroll() {
-      document.body.classList.remove("stop-scrolling");
     }
   },
   components: { LangSwitcher },
   mounted() {
+    this.dropDownStatus = false;
     this.screenWidth = window.innerWidth;
     window.addEventListener("resize", this.onScreenResize);
   },
