@@ -34,6 +34,16 @@ export default {
       this.sceneElements();
       this.sceneTextures();
       this.render();
+      this.resize();
+      if (this.isMobile) {
+        window.addEventListener("touchmove", this.onInputMove, {
+          passive: false
+        });
+      } else {
+        window.addEventListener("mousemove", this.onInputMove);
+      }
+      window.addEventListener("resize", this.resize);
+      this.resize();
     },
     sceneSetup() {
       this.scene = new THREE.Scene();
@@ -127,6 +137,26 @@ export default {
         this.terrain.material.uniforms.pallete.value = texture;
         this.terrain.material.needsUpdate = true;
       });
+    },
+    resize() {
+      this.width = window.innerWidth;
+      this.height = window.innerHeight;
+      this.camera.aspect = this.width / this.height;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(this.width, this.height);
+    },
+    onInputMove(e) {
+      e.preventDefault();
+      var x, y;
+      if (e.type == "mousemove") {
+        x = e.clientX;
+        y = e.clientY;
+      } else {
+        x = e.changedTouches[0].clientX;
+        y = e.changedTouches[0].clientY;
+      }
+      this.mouse.x = x;
+      this.mouse.y = y;
     },
     map(value, start1, stop1, start2, stop2) {
       return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
