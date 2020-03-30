@@ -1,17 +1,17 @@
 <template>
-  <div class="wrapper full-page">
-    <CanvasWave />
-    <div class="cta">
+  <div>
+    <CanvasRandom />
+    <!-- <div class="cta">
       <h1 class="name h1">{{ name }}</h1>
       <p>{{ status }}</p>
       <nuxt-link :to="cta.href" class="button">{{ cta.title }}</nuxt-link>
-    </div>
+    </div>-->
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
-import CanvasWave from "@/components/canvas-wave";
 import buildHead from "@/utils/seo";
+import CanvasRandom from "@/components/canvas/canvas-random";
 export default {
   head() {
     return buildHead(this.indexPage.seo, this.$store);
@@ -33,7 +33,7 @@ export default {
       cta: state => state.profile.cta
     })
   },
-  components: { CanvasWave }
+  components: { CanvasRandom }
 };
 </script>
 
@@ -52,6 +52,7 @@ export default {
 
     .name
       margin-bottom: 16px
+      font-size: 12rem
     p
       margin-bottom: 20px
 
