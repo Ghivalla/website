@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <canvas ref="landscape" />
   </div>
 </template>
@@ -8,7 +8,6 @@ import * as THREE from "three";
 import { mapState } from "vuex";
 import CustomVertex from "@/utils/custom-vertex.txt";
 import CustomFragment from "@/utils/custom-fragment.txt";
-// import palleteImage from "@/assets/images/palette-image.";
 export default {
   data() {
     return {
@@ -51,16 +50,15 @@ export default {
       this.scene.background = fogColor;
       this.scene.fog = new THREE.Fog(fogColor, 0, 400);
 
-      //   this.sky();
-
       this.camera = new THREE.PerspectiveCamera(
-        60,
+        10,
         this.width / this.height,
         0.1,
         10000
       );
       this.camera.position.y = 8;
       this.camera.position.z = 4;
+      this.camera.position.x = 0;
 
       const ambientLight = new THREE.AmbientLight(0xffffff, 1);
       this.scene.add(ambientLight);
@@ -72,33 +70,6 @@ export default {
       this.renderer.setPixelRatio = devicePixelRatio;
       this.renderer.setSize(this.width, this.height);
     },
-    sky() {
-      const sky = new THREE.Sky();
-      sky.scale.setScalar(450000);
-      sky.material.uniforms.turbidity.value = 13;
-      sky.material.uniforms.rayleigh.value = 1.2;
-      sky.material.uniforms.luminance.value = 1;
-      sky.material.uniforms.mieCoefficient.value = 0.1;
-      sky.material.uniforms.mieDirectionalG.value = 0.58;
-
-      this.scene.add(sky);
-
-      const sunSphere = new THREE.Mesh(
-        new THREE.SphereBufferGeometry(20000, 16, 8),
-        new THREE.MeshBasicMaterial({ color: 0xffffff })
-      );
-      sunSphere.visible = false;
-      this.scene.add(sunSphere);
-
-      var theta = Math.PI * -0.002;
-      var phi = 2 * Math.PI * -0.25;
-
-      sunSphere.position.x = 400000 * Math.cos(phi);
-      sunSphere.position.y = 400000 * Math.sin(phi) * Math.sin(theta);
-      sunSphere.position.z = 400000 * Math.sin(phi) * Math.cos(theta);
-
-      sky.material.uniforms.sunPosition.value.copy(sunSphere.position);
-    },
     sceneElements() {
       const geometry = new THREE.PlaneBufferGeometry(100, 400, 400, 400);
 
@@ -108,7 +79,7 @@ export default {
         distortCenter: { type: "f", value: 0.1 },
         roadWidth: { type: "f", value: 0.5 },
         pallete: { type: "t", value: null },
-        speed: { type: "f", value: 2 },
+        speed: { type: "f", value: 3 },
         maxHeight: { type: "f", value: 10.0 },
         color: new THREE.Color(1, 1, 1)
       };
@@ -133,7 +104,6 @@ export default {
     sceneTextures() {
       const loader = new THREE.TextureLoader();
       loader.load(this.img, texture => {
-        console.log(this.terrain);
         this.terrain.material.uniforms.pallete.value = texture;
         this.terrain.material.needsUpdate = true;
       });
@@ -200,12 +170,22 @@ export default {
     this.height = window.innerHeight;
     this.isMobile = typeof window.orientation !== "undefined";
     this.init();
+  },
+  beforeDestroy() {
+    this.renderer.dispose();
+    window.removeEventListener("touchmove", this.onInputMove);
+    window.removeEventListener("mousemove", this.onInputMove);
+    window.removeEventListener("resize", this.resize);
   }
 };
 </script>
 <style lang="sass" scoped>
 .container
     margin: 0
+    position: fixed
+    top: 0
+    left: 0
+    z-index: -1
 
 canvas
     display: block
