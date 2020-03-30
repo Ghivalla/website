@@ -50,6 +50,7 @@ section
     margin: 0 auto
     position: static
     border-top: 1px solid $sep
+    background-color: $light-grey
     footer
       flex-direction: column
       justify-content: center
@@ -63,9 +64,11 @@ section
 
         p
           font-size: 14px
-          color: $grey
+          color: $black
 
 @media screen and (max-width: 800px)
-  section footer
-    padding: 25px
+  section
+    margin: 0
+    footer
+      padding: 25px
 </style>
