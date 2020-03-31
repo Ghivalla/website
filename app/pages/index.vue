@@ -104,7 +104,7 @@ export default {
             glitch(lettersSet[i], 3);
           }
           loop();
-        }, startAt || getRandomNumber(500, 3000));
+        }, startAt || getRandomNumber(500, 10000));
       };
       loop(1500);
     }
@@ -138,6 +138,9 @@ export default {
       line-height: 56px
       font-weight: 600
       margin-bottom: 45px
+
+    .h2
+      text-align: center
 
     p
       margin-bottom: 20px
