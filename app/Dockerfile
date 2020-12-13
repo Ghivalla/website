@@ -1,0 +1,23 @@
+FROM node:14.15
+
+ENV APP_PATH='/app'
+
+RUN mkdir -p $APP_PATH
+WORKDIR $APP_PATH
+
+COPY package.json $APP_PATH
+COPY yarn.lock $APP_PATH
+RUN yarn install
+
+COPY . $APP_PATH
+
+ARG CONTENTFUL_ACCESS_TOKEN
+ARG CONTENTFUL_SPACE_ID
+ARG HOSTNAME
+
+RUN yarn run build
+
+ENV HOST 0.0.0.0
+EXPOSE 3000
+
+CMD [ "yarn", "start" ]
