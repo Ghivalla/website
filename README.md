@@ -1,6 +1,6 @@
 # portfolio
 
-> my personal website, theres no projects shown yet, but it's for soon !
+> my personal website
 
 ## Build Setup
 
