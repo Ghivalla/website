@@ -1,8 +1,18 @@
 <template>
   <form @submit.prevent="formHandler" class="form">
     <div class="fields">
-      <TextField :title="content.nameLabel" v-model="name" :error="errors.name" required />
-      <TextField :title="content.emailLabel" v-model="email" :error="errors.email" required />
+      <TextField
+        :title="content.nameLabel"
+        v-model="name"
+        :error="errors.name"
+        required
+      />
+      <TextField
+        :title="content.emailLabel"
+        v-model="email"
+        :error="errors.email"
+        required
+      />
       <TextField
         :title="content.messageLabel"
         :error="errors.message"
@@ -69,7 +79,7 @@ export default {
             params: { email: this.email }
           });
         } else {
-          console.log("oops something wen wrong with the api");
+          console.log("oops something went wrong with the api");
         }
       });
     },
