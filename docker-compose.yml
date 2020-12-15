@@ -1,0 +1,29 @@
+version: '3.1'
+services:
+  app:
+    build: ./app
+    env_file:
+      - ./app/.env
+    command: 'yarn dev'
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app
+      - 'app_node_modules:/app/node_modules'
+      - 'app_logs:/var/log'
+  server:
+    build: ./server
+    env_file:
+      - ./server/.env
+    command: 'yarn start'
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./server:/server
+      - 'server_node_modules:/server/node_modules'
+      - 'server_logs:/var/log'
+volumes:
+  app_node_modules: {}
+  app_logs: {}
+  server_node_modules: {}
+  server_logs: {}
