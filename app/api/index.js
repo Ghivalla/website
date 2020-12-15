@@ -39,7 +39,6 @@ const getEntries = async (
       limit: 50
     })
     .then(entries => {
-      console.log(entries.items);
       return entries.items.reduce((prev, curr) => {
         const contentType = curr.sys.contentType.sys.id;
         const parser = mapping[contentType];

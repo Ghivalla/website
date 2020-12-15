@@ -64,7 +64,7 @@ export default {
       this.sendForm();
     },
     sendForm() {
-      fetch("https://www.ghivalla.com/api/send-email", {
+      fetch("http://localhost:3001/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
