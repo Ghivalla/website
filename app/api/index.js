@@ -9,9 +9,7 @@ const getEntries = async (
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
   });
-
   const mapping = getMapping(locale);
-
   const query = Array.isArray(content_type)
     ? {
         "sys.contentType.sys.id[in]": content_type.join(","),
@@ -30,7 +28,6 @@ const getEntries = async (
   }
 
   if (id) {
-    query["fields.id.sys.contentType.sys.id"] = "id";
     query["fields.id"] = id;
   }
 
